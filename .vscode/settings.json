@@ -1,0 +1,14 @@
+{
+    "cSpell.language": "en,lt",
+    "files.exclude": {
+        "**.aux": true,
+        "**.bbl": true,
+        "**.blg": true,
+        "**.fdb**": true,
+        "**.fls": true,
+        "**.gz": true,
+        "**.log": true,
+        "**.out": true,
+        "**.toc": true
+    },
+}

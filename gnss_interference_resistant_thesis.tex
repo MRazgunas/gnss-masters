@@ -1,0 +1,82 @@
+\providecommand{\main}{.}
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath}
+
+\usepackage[T2A,T1,L7x]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subfiles}
+
+% Blokuoja float grafiku perlimi i kita sekcija
+\usepackage{placeins}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+% End blocking
+
+%% C kodo formatavimui
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage[lithuanian]{babel}
+\PrerenderUnicode{ĄČĘĖĮŠŲŪŽąčęėįšųūž}
+
+%VU FF formatavimas
+\usepackage{\main/VUFF}% ir pastraipose
+\usepackage{mathptmx}
+\renewcommand{\familydefault}{\rmdefault}
+
+\newcommand{\refeq}[1]{(\ref{#1})}
+\newcommand{\V}[1]{\textup{#1}}
+
+\makeatletter
+\katedra{Taikomosios elektrodinamikos ir telekomunikacijų institutas}
+\pavadinimas{Trikdžiams atsparios palydovinės navigacijos sistemos, skirtos bepiločiams orlaiviams tyrimas ir kūrimas}
+
+%Pasirinkti tinkamą:
+%\darbotipas{Kursinis darbas}
+%\darbotipas{Bakalauro studijų baigiamasis darbas}
+\darbotipas{Mokslo tiriamasis darbas}
+%\darbotipas{Magistrantūros studijų baigiamasis darbas}
+
+\studijuprograma{Elektronikos ir telekomuniakcijų technologijos}
+
+\studentas{Matas Razgūnas}
+%\leistaginti{2019-05-24}
+\vadovas{Dr. Saulius Rudys}
+%\vedejas{prof. Jonas Matukas}
+%\recenzentas{Antanas Antanaitis}
+%\konsultantas{dr. Jurgis Jurgaitis}
+
+\date{Vilnius 2020}
+
+\makeatother
+
+\usepackage[lithuanian]{babel}
+\begin{document}
+\maketitle
+
+\tableofcontents{}
+
+\global\long\def\e{\ensuremath{\mathrm{e}}}
+\global\long\def\diff{\ensuremath{\mathrm{d}}}
+\global\long\def\imath{\ensuremath{\mathrm{i}}}
+
+% All section
+\subfile{1-introduction/introduction.tex}
+
+\bibliographystyle{ljphys}
+\bibliography{literatura}
+
+\end{document}
+
