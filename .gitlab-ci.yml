@@ -1,5 +1,10 @@
 image: miktex/miktex
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+  - /miktex/.miktex/texmfs/install # Cache packages
+
 stages:
   - build
 
