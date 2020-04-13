@@ -1,0 +1,14 @@
+image: miktex/miktex
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - mpm --update-db
+    - pdflatex gnss_interference_resistant_thesis.tex
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - "*.pdf"
