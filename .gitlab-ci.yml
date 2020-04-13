@@ -7,7 +7,7 @@ build:
   stage: build
   script:
     - mpm --update-db
-    - pdflatex gnss_interference_resistant_thesis.tex
+    - latexmk -pdf
   artifacts:
     expire_in: 1 week
     paths:
