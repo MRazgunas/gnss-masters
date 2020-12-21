@@ -1,9 +1,12 @@
 image: miktex/miktex
 
+variables:
+  MIKTEX_USERINSTALL: "$CI_PROJECT_DIR/miktex_cache"
+
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-  - /miktex/.miktex/texmfs/install # Cache packages
+  - miktex_cache/ # Cache packages
 
 stages:
   - build
@@ -11,6 +14,7 @@ stages:
 build:
   stage: build
   script:
+    - echo $MIKTEX_USERINSTALL
     - mpm --update-db
     - latexmk -pdf
   artifacts:
