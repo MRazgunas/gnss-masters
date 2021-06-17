@@ -11,4 +11,5 @@
         "**.out": true,
         "**.toc": true
     },
+    "python.pythonPath": "venv\\Scripts\\python.exe",
 }
