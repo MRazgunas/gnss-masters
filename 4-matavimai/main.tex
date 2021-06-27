@@ -5,5 +5,31 @@
 
 \section{Matavimai}
 
+Visi matavimai atlikti naudojant HackRF One SDR
+imtuvais/siųstuvais. Visų matavimu metu naudojamas nešlio dažnis
+$f_D = 1575,42\ \mathrm{MHz}$, nebent nurodytas kitas dažnis.
+Kaip $10\ \mathrm{MHz}$ šaltinis
+naudojamas OLP01-12s-MF5.8-36A, temperatūriškai stabilizuotas osciliatorius,
+kurio specifikacijos pateiktos \ref{tab:clock_source_spec} lentelėje.
+
+
+\begin{table}[h]
+    \protect\caption{\label{tab:clock_source_spec}OLP01-12s-MF5.8-36A specifikacijos.}
+    \centering{}%
+    \begin{tabular}{| c | c |}
+    \hline
+    Parametro pavadinimas & Vertė \\
+    \hline
+    Dažnis                         & $10\ \mathrm{MHz}$ \\
+    Temperatūrinis stabilumas      & $\pm \num{5e-8}\ \mathrm{Hz/\degree C}$ \\
+    Maitinimo įtampos stabilumas   & $\pm \num{2e-9}\ \mathrm{Hz/V}$ \\
+    Laikinis stabilumas             & $\pm \num{5e-8}\ \mathrm{Hz/Metus}$ \\
+    \hline
+    \end{tabular}
+\end{table}
+
+\subfile{time_sync.tex}
+\subfile{phase.tex}
+% \subfile{gnss_measurement.tex}
 
 \end{document}

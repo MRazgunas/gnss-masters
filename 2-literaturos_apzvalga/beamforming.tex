@@ -5,9 +5,10 @@
 
 \subsection{Spindulio formavimas}
 
-Spindulio formavimas (angl. Beamforming), arba erdvinis formavimas, yra radijo signalų aprorojimo metodas,
+Spindulio formavimas (angl. Beamforming), arba erdvinis formavimas, yra radijo signalų apdorojimo
+metodas,
 naudojamas pasitelkiant antenų masyvus. Spindulio vairavimas pasiekiamas kombinuojant
-signalus iš atskirų antenų sukuriant konstruktyvią interfernciją, taip sudarant
+signalus iš atskirų antenų sukuriant konstruktyvią interferenciją, taip sudarant
 maksimumus.
 
 \begin{figure}[h]
@@ -22,13 +23,13 @@ pasinaudoti nesudėtinga iliustracija \ref{fig:simple_steering}~pav.
 Paveiksliuke pavaizduota 4 elementų spindulio vairavimo sistema. Kiekvienam
 RF signalui yra pritaikomas tam tikras užvėlinimas ($\Delta t$), parinkus
 tinkamas vertes, gaunama konstruktyvi interferencija tik signalui atėjusiam
-iš pasirinktos krypties. Signalams atėjusiams iš kitos krypties, sumatoriuje
-atėjusio signalo fazės nebeatitinka, todėl gaunama desturktyvi interferencija.
+iš pasirinktos krypties. Signalams atėjusiems iš kitos krypties, sumatoriuje
+atėjusio signalo fazės nebeatitinka, todėl gaunama destruktyvi interferencija.
 Keičiant signalo užlaikymą (fazę), galima gauti signalo maksimumą norima
 kryptimi.
 
-Paisnaudojus schemute \ref{fig:beamform_path}~pav., galima suskaičiuoti vėlinimo laiką ($\Delta t$), arba reikalingą
-fazės pokitytį ($\Delta\Phi$).
+Pasinaudojus \ref{fig:beamform_path}~pav. schema, galima suskaičiuoti vėlinimo laiką ($\Delta t$), arba reikalingą
+fazės pokytį ($\Delta\Phi$).
 
 \begin{figure}[h]
     \begin{centering}
@@ -54,17 +55,17 @@ Laikant kad $d = \lambda / 2$, \refeq{eq:phase_shift} lygtis supaprastėja ir ga
     \Delta \Phi = \pi \sin{\Theta}
 \end{equation}
 
-Norint įvertiniti spindulio formą, iš kelių antenų, galime įsivesti masyvo faktorių
+Norint įvertinti spindulio formą, iš kelių antenų, galime įsivesti masyvo faktorių
 $AF$ (angl. array factor). Šis parametras nurodo spindulio formą, neatsižvelgus
-į antenų, sudarančių masyva, spindulio formą. Turint antenos spindulio formą,
-ir $AF$, antenų masyvo spindulio forma galime gauti sudejus abu parametrus
-(jeigu jie yra išreikšti $\mathrm{dB}$ vientais).
-$AF$ išraiška N-antenų masyvui, kai jos yra vienoje plokšumoje \cite{phase_array_handbook}:
+į antenų, sudarančių masyvą, spindulio formą. Turint antenos spindulio formą
+ir $AF$, antenų masyvo spindulio forma galime gauti sudėjus abu parametrus
+(jeigu jie yra išreikšti $\mathrm{dB}$ vienetais).
+$AF$ išraiška N-antenų masyvui, kai jos yra vienoje plokštumoje \cite{phase_array_handbook}:
 \begin{equation}
     AF(\Theta,\Delta \Phi) = \frac{\sin{\left( N\left[ \frac{\pi d}{\lambda} \sin{\Theta} - \frac{\Delta \Phi}{2} \right] \right)}}{N \sin{\left( \frac{\pi d}{\lambda}\sin{\Theta}-\frac{\Delta \Phi}{2}\right)}}
     \label{eq:array_factor}
 \end{equation}
-Pasinaudojus \refeq{eq:array_factor} lygtime galime nubraižyti spindulio formą, kai $d=\lambda /2$:
+Pasinaudojus \refeq{eq:array_factor} lygtimi galime nubraižyti spindulio formą (\ref{fig:af_polar_plot}~pav.), kai $d=\lambda /2$.
 
 \begin{figure}[h]
     \begin{centering}

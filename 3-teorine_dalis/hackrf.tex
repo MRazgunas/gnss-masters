@@ -1,0 +1,63 @@
+% !TEX root = ../gnss_interference_resistant_thesis.tex
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{HackRF One SDR imtuvas/siųstuvas}\label{sec:hackrf}
+
+HackRF One yra SDR imtuvas, kuris sugeba siųsti/priimti signalus dažnių ruože nuo
+$1\ \mathrm{MHz}$ iki $6\ \mathrm{GHz}$ \cite{hackrf_one}.
+HackRF imtuvas turi 8 bitų ADC, veikiantį iki $20\ \mathrm{MHz}$.
+Imtuvo brėžiniai ir apartinė įranga yra atviro kodo, todėl visi
+reikalingi pakeitimai gali būti nesunkiai įgyvendinti \cite{hackrf_github}.
+
+\begin{figure}[h]
+    \begin{centering}
+    \includegraphics[scale=0.1]{drawings/hackrf_img}
+    \par\end{centering}
+    \protect\caption{\label{fig:hackrf_img}HackRF One nuotrauka su pažymėtais įėjimais ir išėjimais.}
+\end{figure}
+
+Norint atlikti spindulio formavimą, reikia tiek SDR imtuvų, kiek masyve
+turėsime antenų. Kad būtų įmanoma atlikti spindulio formavimą, reikia laiko, dažnio ir fazės
+sinchronizacijos tarp visų SDR imtuvų.
+Dažnio sinchronizaciją pasiekti yra lengviausia, vieno imtuvo CLK OUT sujungiamas su
+kitų imtuvų CLK IN, taip gaunama dažnio sinchronizacija, kadangi
+visi imtuvai generuojasi taktinius dažnius iš to pačio šaltinio.
+
+Laiko sinchronizaciją pasiekti yra sudėtingiau. Prieš pradedant duomenų nuskaitymą,
+kompiuterio operacinė sistema (OS), išsiunčia nuskaitymo pradžios komandą.
+Kadangi OS sistema yra nenuspėjama, atsiranda tam tikri uždelsimai, tarp
+visų nuskaitymo komandų. Kadangi imtuvai pradeda skaityti skirtingu metu,
+nebeįmanoma sulyginti IQ taškų gautų kompiuteryje. Vienas iš galimų sprendimų
+yra susinchronizuoti visų imtuvų nuskaitymo pradžia pasitelkus signalu,
+kuris perduodamas ne per USB, tačiau tiesiogiai tarp imtuvų.
+Toks metodas buvo ištyrinėtas ir nustatytą, kad pasiekiama sinchronizaciją
+geresnė negu 1 nuskaitymo taškas \cite{hackrf_sync}.
+
+\begin{figure}[h]
+    \begin{centering}
+    \includegraphics[scale=0.8]{drawings/hackrf_sync}
+    \par\end{centering}
+    \protect\caption{\label{fig:hackrf_sync}HackRF imtuvų sinchronizacijos schema \cite{hackrf_sync}.}
+\end{figure}
+
+Vienas iš imtuvų yra pasirenkamas kaip valdantysis, kuris generuoja SYNC CMD signalą,
+kiti kaip valdomieji, kurie laukia SYNC IN signalo. Kompiuteris
+išsiunčia komandą į visus imtuvus, kad lauktų signalo iš vieno iš imtuvų,
+valdančiajam imtuvui sugeneravus pradžios signalą, visi imtuvai vienu metu pradeda
+nuskaitymą ir duomenų siuntimą į kompiuterį.
+
+Fazinės sinchronizacijos įsijungimo metu pasiekti neįmanoma. Kadangi įsijungimo metu yra
+paleidinėjami dažnio daugintuvai (PLL), jų pradinė fazė yra atsitiktinė.
+Norint turėti vienodas fazes, reikia naudoti tą patį PLL šaltinį visiems
+dažnių maišytuvams. HackRF tokios galimybės neturi be didelių pakeitimų, todėl pasirinktas
+kalibracijos metodas.
+Kai SDR yra inicializuotas, jo fazė yra pakankamai stabili, kad būtų galima
+vykdyti spindulio formavimą.
+Tam, kad išsiaiškinti imtuvų fazę, po kiekvieno įjungimo reikia atlikti kalibravimą.
+Į visų imtuvų įėjimą, paduodamas pastovus signalas, kompiuteryje yra išsaugomas
+fazinis poslinkis tarp imtuvų. Baigus kalibravimą galima pradėti spindulio
+formavimo operacijas.
+
+\end{document}
