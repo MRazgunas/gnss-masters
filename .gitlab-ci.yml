@@ -17,6 +17,7 @@ build:
     - echo $MIKTEX_USERINSTALL
     - mpm --update-db
     - latexmk -pdf
+    - ls -la ./
   artifacts:
     expire_in: 1 week
     paths:
