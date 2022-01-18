@@ -3,7 +3,7 @@
 
 \begin{document}
 
-\subsection{Laikinės sinchronizacijos matavimas}\label{sec:time_sync}
+\subsection{HackRF laikinės sinchronizacijos matavimas}\label{sec:time_sync}
 
 Tikrinant laikinę sinchronizaciją, naudojamas stendas, kurio
 blokinė diagrama pavaizduota \ref{fig:measurement_stand}~pav.
@@ -38,12 +38,29 @@ maksimumas nurodo uždelsimą tarp dviejų signalų.
     \begin{centering}
     \includegraphics[scale=1.0]{drawings/time_sync}
     \par\end{centering}
-    \protect\caption{\label{fig:time_sync_result}Signalų koreliacijos rezultatas.}
+    \protect\caption{\label{fig:time_sync_result}HackRF signalų koreliacijos rezultatas.}
 \end{figure}
 
 \ref{fig:time_sync_result}~pav. galime matyti, kad koreliacijos maksimumas yra centruotas
-ties $0\ \mathrm{ns}$, todėl galime daryti išvadą, kad imtuvai yra
-laikiškai sinchronizuoti, $\pm 1$ taško tikslumu (kai skaitymo dažnis yra $f_s=4\ \mathrm{MHz}$).
+ties $0\ \mathrm{\mu s}$, todėl galime daryti išvadą, kad imtuvai yra sinchronizuoti laike,
+$\pm 1$ taško tikslumu (kai skaitymo dažnis yra $f_s=2\ \mathrm{MHz}$).
 Rezultatas sutampa su rezultatais pateiktais \cite{hackrf_sync} straipsnyje.
+
+\subsubsection{Koreliacijos skaičiavimo optimizavimas}
+
+\ref{sec:time_sync} skyriuje aprašytas algoritmas reikalauja didelių skaičiavimo pajėgumų,
+todėl taikyti šio algoritmo realiu laiku neišeina. Algoritmas gali būti optimizuotas
+pasinaudojus koreliacijos savybe, kuri lemia tai, kad sudauginus kompleksiškai jungtines signalų
+Furje transformacijas, gauname koreliacijos Furje transformaciją. Rezultatui pritaikius
+atvirkštinę Furje transformaciją gauname koreliacijos rezultatą.
+Sparčiam Furje skaičiavimui naudosime FFT (angl. Fast Fourier transform) algoritmą, kuris
+tinkamas naudoti su diskretizuotu signalu.
+
+Algoritmo eiliškumas:
+\begin{enumerate}
+    \item Atliekame abiejų signalų Furje transformacijas pasinaudojus FFT algoritmu;
+    \item Sudauginame vieną signalą su kito kompleksinio jungtinu rezultatu;
+    \item Atliekame atvirkštinę Furje transformaciją pasinaudojus FFT algoritmu;
+\end{enumerate}
 
 \end{document}

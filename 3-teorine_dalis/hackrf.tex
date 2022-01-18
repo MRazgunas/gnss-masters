@@ -49,10 +49,10 @@ valdančiajam imtuvui sugeneravus pradžios signalą, visi imtuvai vienu metu pr
 nuskaitymą ir duomenų siuntimą į kompiuterį.
 
 Fazinės sinchronizacijos įsijungimo metu pasiekti neįmanoma. Kadangi įsijungimo metu yra
-paleidinėjami dažnio daugintuvai (PLL), jų pradinė fazė yra atsitiktinė.
+paleidinėjama fazės paderinimo sistema su grįžtamuoju ryšiu - PLL (angl. Phase Locked Loop), jų pradinė fazė yra atsitiktinė.
 Norint turėti vienodas fazes, reikia naudoti tą patį PLL šaltinį visiems
 dažnių maišytuvams. HackRF tokios galimybės neturi be didelių pakeitimų, todėl pasirinktas
-kalibracijos metodas.
+kalibravimo metodas.
 Kai SDR yra inicializuotas, jo fazė yra pakankamai stabili, kad būtų galima
 vykdyti spindulio formavimą.
 Tam, kad išsiaiškinti imtuvų fazę, po kiekvieno įjungimo reikia atlikti kalibravimą.

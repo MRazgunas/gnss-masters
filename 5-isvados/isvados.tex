@@ -6,10 +6,16 @@
 \section*{Išvados ir rezultatai}\addcontentsline{toc}{section}{Išvados ir rezultatai}
 
 \begin{enumerate}
-    \item Tiriant laiko sincronizaciją tarp kelių imtuvų, nustatyta, kad gauta sinchronizacija
-          geresnė negu $\pm 1$ nuskaitymo taškas.
-    \item Tiriant fazinę sincrhonizaciją tarp kelių imtuvų, nustatyta, kad fazės skirtumas
-          tarp imtuvų nusistovi greičiau negu per $5\ \mathrm{s}$ ir nusistovėjus toliau nebekinta.
+    \item Tiriant HackRF laiko sinchronizaciją tarp kelių imtuvų, nustatyta, kad gauta sinchronizacija
+          geresnė negu $\pm 1$ nuskaitymo taškas. Atliekant tuos pačius matavimus su KerberosSDR imtuvu,
+          gauta, kad vėlinimas tarp imtuvų yra kintamas, todėl šiam imtuvui reikalingas vėlinimo kalibravimas.
+    \item Tiriant HackRF ir KerberosSDR fazinę sinchronizaciją tarp kelių imtuvų, nustatyta, kad fazės skirtumas
+          tarp imtuvų nusistovi greičiau negu per $5\ \mathrm{s}$, HackRF imtuvo fazė kinta bėgant laikui, per
+          20 minučių pakinta apie $0,35\ \mathrm{rad}$, o KerberosSDR imtuvo fazė yra stabili ir nekinta.
+          Norint panaudoti HackRF imtuvus, reikalingas periodiškas fazės kalibravimas.
+    \item Išmatavus spinduolių sistemos kryptingumo diagramą, nustatyta, kad gaunamas $3\ \mathrm{dB}$
+          signalo padidėjimas, naudojant spindulio formavimą ir pademonstruotas spindulio krypties keitimas
+          pasinaudojant sinchronizuotus HackRF imtuvus.
 \end{enumerate}
 
 \end{document}
