@@ -28,7 +28,7 @@ Signalo apdorojimas prasideda nuo duomenų šaltinio (angl. Signal Source). Duom
 gali būti arba SDR imtuvas, arba duomenų failas. Dažniausiai SDR imtuvas naudojamas,
 kai duomenys yra apdorojami realiu laiku, o duomenų failas, kai duomenis yra apdorojami
 vėliau, taip pat duomenų failas yra patogesnis naudojimui kai yra tobulinamas GNSS SDR
-kodas, kadangi galima nesunkiai lyginti imtuvo kokybę su tuo pačiu signalu.
+programinis kodas, kadangi galima nesunkiai lyginti imtuvo kokybę su tuo pačiu signalu.
 
 Duomenys iš šaltinio turi būti pritaikyti prie vidinio formato. Signalo šaltiniai
 dažnai turi skirtingus formatus, skiriasi duomenų rezoliucija, išdėliojimas ir t.t.
@@ -48,5 +48,87 @@ pseudo atstumo, fazės ir doplerio dažnio matavimus. Iš šių duomenų, galime
 rasti imtuvo poziciją, greitį ir laiką, už tai yra atsakingas PVT
 (angl. Position-Velocity-Time) blokas. Šis blokas atsakingas už sprendinio
 radimą ir rezultato pateikimą skirtingais standartizuotais formatais.
+
+\subsubsection{GNSS signalo sekimo blokas}\label{sec:tracking_block}
+
+Sekimo bloko pagrindinė užduotis yra sekti signalo sinchronizacijos parametrus:
+kodo užlaikymą ($\tau(t)$), Doplerio dažnį ($f_D(t)$) ir nešlio fazę ($\phi(t)$).
+
+Pasinaudojus didžiausio tikėtinumo metodas (ML), bandoma maksimizuoti priimamo
+signalo koreliaciją su lokaliai atkurtu signalu. ML sekami parametrai $f_D$ ir
+$\tau$ gali būti surasti maksimizuojant šią funkciją:
+
+\begin{equation}
+    \hat{f}_{D_{ML}},\hat{\tau}_{ML} = \arg \max \left\{ \left| \hat{R}_{xd}(f_D, \tau) \right|^2 \right\},
+\end{equation}
+
+\noindent kur
+
+\begin{equation}
+    \hat{R}_{xd}(f_D, \tau) = \frac{1}{K} \sum^{K-1}_{k=0} {x_{IN}[k]d[kT_s-\tau]e^{-j2\pi f_D kT_s}},
+\end{equation}
+
+\noindent čia $x_{IN}[k]$ signalas aprašytas \refeq{eq:gps_signal}, $d[k]$ - lokali palydovo
+signalo kopija, $K$ - taškų skaičius naudojamas koreliacijai.
+
+Signalo sekimas yra pasiekiamas pasinaudojus uždaro kontūro sistemomis,
+kurios yra su\-pro\-jek\-tuo\-tos taip, kad minimizuotų skirtumus tarp kodo užlaikymo,
+Doplerio dažnio ir nešlio fazės lyginant su lokalia signalo kopiją $d[k]$.
+
+GNSS signalų atveju imtuvas skaičiuoja 3-jų signalų $R_{xd}$ koreliacijas:
+paanksinto signalo $E=R_{xd}(\hat{\tau} + \epsilon)$,
+nevėlintas signalas $P=R_{xd}(\hat{\tau})$,
+pavėlintas signalas $L=R_{xd}(\hat{\tau} - \epsilon)$.
+Atlikus koreliacijas, palyginami rezultatai ir taip nustatoma
+ar lokali signalo kopiją atsilieka, skuba ar tiksliai atkartoja
+priimama signalą. Atlikus skaičiavimus atnaujinama lokali signalo kopija
+ir vėl viskas vykdoma iš naujo. Blokinė diagrama signalo sekimo pavaidzuota
+\ref{fig:gnss_sdr_tracking_block}~pav.
+
+\begin{figure}[h]
+    \begin{centering}
+    \includegraphics[scale=0.5]{drawings/tracking_diagram}
+    \par\end{centering}
+    \protect\caption{\label{fig:gnss_sdr_tracking_block}GNSS signalo sekimo blokinė diagrama \cite{gnss_sdr_web}.}
+\end{figure}
+
+\subsubsection{GNSS signalo ir triukšmo santykio nustatymas}
+
+Signalo ir triušmo tankio santykis gali būti išreikštas kaip $C/N_0 = \frac{C}{\frac{N}{BW}}$,
+kur $C$ yra nešlio galia, $N$ - triukšmų galia, $BW$ - imtuvo juostos plotis.
+Ši išraiska parodo nešlio galios ir triukšmo galios santykį per juostos pločio vienetą.
+Santykis $\frac{C}{N}$ vadinamas signalo triukšmo santykiu (SNR).
+
+Laikant, kad dažnių juostos plotis yra atvirščiai proporcingas integravimo laikui $T_{int}$,
+galime užrašyti:
+
+\begin{equation}
+    C/N_0 = \frac{SNR}{T_{int}}.
+    \label{eq:snr_integration}
+\end{equation}
+
+Kompleksiniams skaičiams SNR gali būti suskaičiuotas pasinaudojus antro ir ketvirto
+laipsnio momentų vertintuvu \cite{871393}:
+
+\begin{equation}
+    \widehat{SNR} = \frac{\hat{C}}{\hat{N}} = \frac{\sqrt{2 \hat{\mathcal{M}}_2^2 - \hat{\mathcal{M}}_4 }}{\hat{\mathcal{M}}_2 - \sqrt{2 \hat{\mathcal{M}}_2^2 - \hat{\mathcal{M}}_4 }}~,
+    \label{eq:snr_moment}
+\end{equation}
+
+\noindent čia:
+\begin{itemize}
+    \item $\hat{\mathcal{M}}_2 = \frac{1}{M} \sum^{M-1}_{m=0}{\left| P[m] \right|^2}$, 
+    \item $\hat{\mathcal{M}}_4 = \frac{1}{M} \sum^{M-1}_{m=0}{\left| P[m] \right|^4}$,
+    \item $M$ - taškų skaičius naudojamas SNR estimacijai,
+    \item $P[m]$ - nevėlinto koreliatoriaus kompleksinė vertė (aprašyta \ref{sec:tracking_block} skyriuje).
+\end{itemize}
+
+Pasinaudojus \refeq{eq:snr_integration} ir \refeq{eq:snr_moment} galime išreiktšti
+$C/N_0$ vertę $\mathrm{dB-Hz}$ vienetais:
+
+\begin{equation}
+    \widehat{C/N}_{0_{dB-Hz}} = 10\log_{10}(\widehat{SNR})-10\log_{10}(T_{int})~.
+\end{equation}
+
 
 \end{document}

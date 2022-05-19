@@ -8,10 +8,12 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565
     && echo "deb http://miktex.org/download/ubuntu focal universe" | sudo tee /etc/apt/sources.list.d/miktex.list
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y miktex ghostscript
+    && apt-get install --no-install-recommends -y miktex ghostscript python3-pip
 
-RUN miktexsetup --shared=yes finish \
-    && initexmf --admin --set-config-value [MPM]AutoInstall=1
+USER vscode
+
+RUN miktexsetup finish \
+    && initexmf --set-config-value [MPM]AutoInstall=1
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

@@ -50,7 +50,17 @@ LNAV duomenys yra skirti, perduoti imtuvui tam tikrus GPS sistemos parametrus, t
 kaip orbitos duomenis, laikrodžio korekcijos ir kita.
 Antroji nešlio dalis yra moduliuojama C/A (netikslaus sekimo) kodu ir tais pačiai LNAV
 duomenimis. C/A kodas yra 1023 "čirpų" ilgio ir jo dažnis yra $1.023\ \mathrm{MHz}$.
-C/A kodas yra naudojamas signalo sklidimo trukmei matuoti.
+C/A kodas yra naudojamas signalo sklidimo trukmei matuoti. GPS signalas gali būti
+aptašomas šia lygtimi:
+
+\begin{equation}
+    x_{IN}[k] = A(t) \widetilde{s_T}(t-\tau(t))e^{j(2\pi f_D(t)t+\phi(t))} |_{t=kT_s} + n(t) |_{t=kT_s},
+    \label{eq:gps_signal}
+\end{equation}
+
+\noindent čia $x_{IN}$ priiamas signalas, $A(t)$ - signalo amplitudė, $\widetilde{s_T}$
+- kompleksinis GPS signalas, $\tau(t)$ - kodo vėlinimas, $f_D(t)$ - Doplerio dažnis,
+$\phi(t)$ - nešlio fazė, $n(t)$ - triukšmai, $T_s$ - diskretizacijos dažnis imtuve.
 
 \begin{figure}[h]
     \begin{centering}
