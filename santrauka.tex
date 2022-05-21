@@ -1,0 +1,52 @@
+% !TEX root = ./gnss_interference_resistant_thesis.tex
+\documentclass[./gnss_interference_resistant_thesis.tex]{subfiles}
+
+\begin{document}
+
+\santrauka{R\&D of Robust to Interferences GNSS Navigation Subsystem for UAVs}{
+
+\iffalse
+Terahertzų (100GHz - 10THz) sritis šiuo metu yra sparčiai vystoma ir tyrinėjama, dėl plačių jos taikymų.
+Parodžius,
+kad THz bangas gali detektuoti lauko tranzistoriai, atsirado galimybės gaminti detektorius ir jų matricas
+pasinaudojus masinės gamybos technologijomis. Perkonfigūruojamos jutiklių matricos leidžia nuskaityti spindulio
+profilius, vaizdus. Sujungiant kelis jutiklius į vieną galima sukurti jutiklį pritaikytą norimam spindulio
+profiliui.
+
+Šiame darbe buvo pademonstruotas THz jutiklių matricos valdymo ir nuskaitymo metodas
+leidžiantis nesunkiai didinti jutiklių matricas. Darbe apibūdinta valdymo elektronikos veikimo principai,
+skaitmeninių potenciometrų panaudojimas užtūros įtampos valdymui, mažatriukšmių stiprintuvų dizainas. Parodyta,
+kad valdymo elektronika neįneša reikšmingų papildomų triukšmų į matuojamą signalą.
+
+Pasinaudojus sukurta valdymo elektronika buvo ištyrinėta AlGaN/GaN 7x6 jutiklių matrica,
+buvo nustatyta, kad perkonfigūruojant jutiklių matrica, buvo pasiektas $3,3\mathrm{dB}$ SNR padidėjimas.
+Išmatuotos detektoriaus charakteristikos: varžos, NEP, jautrio priklausomybės nuo užtūros įtampos, dažninės
+jautrio ir NEP priklausomybes intervale nuo $50\mathrm{GHz}$ iki $1200\mathrm{GHz}$. Nustatytas naudojamų detektorių geriausias jautris $115,2\mathrm{V/W}$ ir NEP $93\mathrm{pW/\sqrt{Hz}}$ prie $278\mathrm{GHz}$.
+\fi
+
+\foreignlanguage{english}{
+Terahertz (100GHz - 10THz) technologies is undergoing rapid research and development due to their potential to wide range of
+applications. It was recently shown that THz radiation can be efficiently detected by field effect transistors. This enables large scale production
+of detectors by employing well developed semiconductor fabrication technologies. 
+One of new opportunities for applications brought by these technologies is a possibility to implement
+detector with configurable effective cross section.
+Such detector could allow to scan beam profile, one can configure a detector adapted to the desired beam
+cross section.
+}
+
+\foreignlanguage{english}{
+This work demonstrates THz detector matrix control and scanning method, allowing easy expansion to bigger
+matrices. This work describes principles of operation of control electronics, use of digital potentiometers
+for gate voltage control, low noise amplifier design. Designed control circuitry does not introduce a significant amount of noise to the measured signal.
+}
+
+\foreignlanguage{english}{
+Using developed control electronics , the matrix of AlGaN/GaN 7x6 sensor array was studied. It was found
+that an increase of SNR by $3,3\ \mathrm{dB}$ was achieved by reconfiguring detector matrix. The most important 
+characteristics of the detector were studied: resistance, sensitivity and NEP dependence to gate voltage.
+Sensitivity and NEP frequency characteristics was measured in range from $50\ \mathrm{GHz}$ to $1200\ \mathrm{GHz}$.
+Best sensitivity achieved was $115,2\ \mathrm{V/W}$ and NEP $93\ \mathrm{pW/\sqrt{Hz}}$ at $278\ \mathrm{GHz}$.
+}
+}
+
+\end{document}
