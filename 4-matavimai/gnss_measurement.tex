@@ -152,7 +152,7 @@ nematome, tai šiam matavimui atspindžiai nesudarė papildomo trikdžio koordin
 
 
 
-\subsubsection{GNSS signalų priėmimas kai atspindžiai vyksto nuo vieno pastato}
+\subsubsection{GNSS signalų priėmimas kai atspindžiai vyksto nuo vieno pastato}\label{sec:gnss_meas_one_reflection}
 
 Antras matavimas buvo daromas vietovėje kur yra vienas, nedidelis pastatas, nuo kurio gali atsirasti
 signalo atspindžiai. Matavimo vieta ir laikas (palydovų išsidėstymas) pavaizduoti \ref{fig:two_reflection_sat_pos}~pav.
@@ -215,8 +215,13 @@ Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
     \protect\caption{\label{fig:single_reflection_map}Imtuvo pozicijos koordinatės su spindulio formavimu ir be spindulio formavimo. Playdovinės nuotraukos \cite{google_maps}.}
 \end{figure}
 
-\subsubsection{GNSS signalų priėmimas urbanistinėje aplinkoje}
+\subsubsection{GNSS signalų priėmimas urbanistinėje aplinkoje}\label{sec:gnss_meas_two_reflection}
 
+Trečiajam matavimui pasirinkta vieta su dviem aukštais pastatais.
+\ref{fig:two_reflection_sat_pos}~pav. rodonu kryžiuku pažymėta apytikslė matavimų
+vieta. Rytuose ir vakaruose yra du aukšti pastatai, kurie blokuoja tiesioginį signalą. 
+\ref{fig:two_reflection_sat_pos}~pav. kairėje pavaizduotas paldyovų išsidėstymas
+matavimo metu, juoduomis rodyklėmis pažymeta palydovų judėjimo kryptis.
 
 \begin{figure}[ht]
     \begin{centering}
@@ -225,6 +230,14 @@ Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
     \protect\caption{\label{fig:two_reflection_sat_pos}Kairėje playdovų išsidėstymas dangaus skliaute matavimų metu, dėšinėje matavimo vietovės palydovinė nuotrauka \cite{google_maps}.}
 \end{figure}
 
+\ref{fig:two_reflection}~pav. pavaziduota nustatytos palydovų signalų kryptis.
+Panoraminėje nuotraukoje matome, kad rytuose ir vakaruose yra du aukšti pastati.
+PRN2 galime matyti, kad signalas gaunams tiesioginis, bet iš
+\ref{fig:two_reflection_sat_pos}~pav. galime matyti, kad palydovas netrukus
+pasislėps už pastato. Taip pat stebime nestriprų atspindį nuo pastato vakaruose
+(apie $-60$ laipsnių). PRN31 palydovo atveju, tikroji padėtis yra apie $-120$
+laipsnių kryptimi, bet čia joks signalas nestebimas, tačiau imtuvas stebi stiprų
+atspindį nuo pastato rytuose.
 
 \begin{figure}[ht]
     \begin{centering}
@@ -233,6 +246,16 @@ Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
     \protect\caption{\label{fig:two_reflection}Nustatytos GPS palydovų signalų kryptys, naudojant MUSIC algoritmą.}
 \end{figure}
 
+\ref{fig:two_reflection_snr}~pav. pavaizduotas signalo triukšmo santykis su spindulio
+ir be spindulio formavimo.  PRN02 atveju, po 5 minučių matavimo, galime
+matyti, kad su spindulio formavimu,
+signalo triukšmo santykis staigiai pradeda mažėti. Kaip aprašyta anksčiau, palydovas
+pasislepia už pastato. Be spindulio formavimo PRN2 signale galime
+stebėti signalo sumažėjima, bet jis visiškai neišnyksta, kadangi
+vietoje tiesioginio signalo, imtuvas pradeda matyti atspindį nuo pastato vakaruose.
+PRN31 atveju su spindulio formavimu, iš pradžių signalas yra matomas, tačiau palydovui
+leidžiantis, signalas pradingsta, pasislepia už pastato esančio vakaruose.
+
 \begin{figure}[ht]
     \begin{centering}
     \includegraphics[scale=0.6]{drawings/two_reflections_snr}
@@ -240,6 +263,12 @@ Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
     \protect\caption{\label{fig:two_reflection_snr}Nustatytas signalo triukšmo santykys nenaudojant ir naudojant spindulio formavimą.}
 \end{figure}
 
+\ref{fig:two_reflection_map}~pav. galime matyti, kad be spindulio formavimo koordinačių
+nuokrypis yra didelis, taip yra dėl to, kad esant tarp didelių pastatų, dauguma palydovų
+yra užstojami, ir koordinatės skaičiavimui buvo naudojami 4 palydovai, minimalus
+skaičius reikalingas skaičiavimams. Pritaikius spindulio formavimą koordinačių
+nuokrypis sumažėjo, pagrindės to priežastis yra naudojami 4-5 palydovai koordinačių
+skaičiavimui, bei sumažėjęs atspindžių trigdis.
 
 \begin{figure}[ht]
     \begin{centering}
@@ -247,5 +276,22 @@ Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
     \par\end{centering}
     \protect\caption{\label{fig:two_reflection_map}Imtuvo pozicijos koordinatės su spindulio formavimu ir be spindulio formavimo. Playdovinės nuotraukos \cite{google_maps}.}
 \end{figure}
+
+\subsubsection{GNSS imutuvo matavimų apibendrinimas}
+
+% {sec:gnss_meas_no_reflection}
+% {sec:gnss_meas_one_reflection}
+% {sec:gnss_meas_two_reflection}
+
+Atlikus tris matavimus, trijose skirtingose vietovėse, pademonstruota signalų
+sklidimo kryp\-ties, bei atspindžių nustatymas pasinaudojant MUSIC algoritmu.
+Pritaikius spindulio formavimą, pademonstruotas signalo tirukmšo santykio padidėjimas nuo
+$2\ \mathrm{dB}$ iki $8\ \mathrm{dB}$. Taikant spindulio formavimą
+vietovėje, kurioje nėra atspindžių, nestebėtas koordinačių pasiskirstymo
+sumažėjimas. Esant vienam atspindžių paviršiui, pastebėtas koordinatės 
+nuokrypio sumažėjimas, bei vidutinės koordinatės atitolėjimas nuo atspindžių
+šaltinio. Urbanistinėje aplinkoje spindulio formavimas padeda priimti
+signalą iš didesnio skaičiaus palydovų kas leidžia patikslinti
+koordinatės skai\-čia\-vi\-mą.
 
 \end{document}
