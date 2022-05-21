@@ -44,7 +44,7 @@ Aptikus palydovo signalą, pradiniai sekimo parametrai yra perduodami sekimo
 blokui, kuris užsirakina ant signalo.
 
 Stebėjimo blokas (angl. Observables) surenka duomenis iš visų kanalų ir atlieka
-pseudo atstumo, fazės ir doplerio dažnio matavimus. Iš šių duomenų, galime
+pseudo atstumo, fazės ir Doplerio dažnio matavimus. Iš šių duomenų, galime
 rasti imtuvo poziciją, greitį ir laiką, už tai yra atsakingas PVT
 (angl. Position-Velocity-Time) blokas. Šis blokas atsakingas už sprendinio
 radimą ir rezultato pateikimą skirtingais standartizuotais formatais.
@@ -76,13 +76,13 @@ kurios yra su\-pro\-jek\-tuo\-tos taip, kad minimizuotų skirtumus tarp kodo už
 Doplerio dažnio ir nešlio fazės lyginant su lokalia signalo kopiją $d[k]$.
 
 GNSS signalų atveju imtuvas skaičiuoja 3-jų signalų $R_{xd}$ koreliacijas:
-paanksinto signalo $E=R_{xd}(\hat{\tau} + \epsilon)$,
+paankstinto signalo $E=R_{xd}(\hat{\tau} + \epsilon)$,
 nevėlintas signalas $P=R_{xd}(\hat{\tau})$,
 pavėlintas signalas $L=R_{xd}(\hat{\tau} - \epsilon)$.
 Atlikus koreliacijas, palyginami rezultatai ir taip nustatoma
 ar lokali signalo kopiją atsilieka, skuba ar tiksliai atkartoja
 priimama signalą. Atlikus skaičiavimus atnaujinama lokali signalo kopija
-ir vėl viskas vykdoma iš naujo. Blokinė diagrama signalo sekimo pavaidzuota
+ir vėl viskas vykdoma iš naujo. Blokinė diagrama signalo sekimo pavaizduota
 \ref{fig:gnss_sdr_tracking_block}~pav.
 
 \begin{figure}[h]
@@ -94,12 +94,12 @@ ir vėl viskas vykdoma iš naujo. Blokinė diagrama signalo sekimo pavaidzuota
 
 \subsubsection{GNSS signalo ir triukšmo santykio nustatymas}\label{sec:gnss_snr}
 
-Signalo ir triušmo tankio santykis gali būti išreikštas kaip $C/N_0 = \frac{C}{\frac{N}{BW}}$,
+Signalo ir triukšmo tankio santykis gali būti išreikštas kaip $C/N_0 = \frac{C}{\frac{N}{BW}}$,
 kur $C$ yra nešlio galia, $N$ - triukšmų galia, $BW$ - imtuvo juostos plotis.
-Ši išraiska parodo nešlio galios ir triukšmo galios santykį per juostos pločio vienetą.
+Ši išraiška parodo nešlio galios ir triukšmo galios santykį per juostos pločio vienetą.
 Santykis $\frac{C}{N}$ vadinamas signalo triukšmo santykiu (SNR).
 
-Laikant, kad dažnių juostos plotis yra atvirščiai proporcingas integravimo laikui $T_{int}$,
+Laikant, kad dažnių juostos plotis yra atvirkščiai proporcingas integravimo laikui $T_{int}$,
 galime užrašyti:
 
 \begin{equation}
@@ -108,7 +108,7 @@ galime užrašyti:
 \end{equation}
 
 Kompleksiniams skaičiams SNR gali būti suskaičiuotas pasinaudojus antro ir ketvirto
-laipsnio momentų vertintuvu \cite{871393}:
+laipsnio momentų vertintoju \cite{871393}:
 
 \begin{equation}
     \widehat{SNR} = \frac{\hat{C}}{\hat{N}} = \frac{\sqrt{2 \hat{\mathcal{M}}_2^2 - \hat{\mathcal{M}}_4 }}{\hat{\mathcal{M}}_2 - \sqrt{2 \hat{\mathcal{M}}_2^2 - \hat{\mathcal{M}}_4 }}~,
@@ -119,11 +119,11 @@ laipsnio momentų vertintuvu \cite{871393}:
 \begin{itemize}
     \item $\hat{\mathcal{M}}_2 = \frac{1}{M} \sum^{M-1}_{m=0}{\left| P[m] \right|^2}$, 
     \item $\hat{\mathcal{M}}_4 = \frac{1}{M} \sum^{M-1}_{m=0}{\left| P[m] \right|^4}$,
-    \item $M$ - taškų skaičius naudojamas SNR estimacijai,
+    \item $M$ - taškų skaičius naudojamas SNR įvertinimui,
     \item $P[m]$ - nevėlinto koreliatoriaus kompleksinė vertė (aprašyta \ref{sec:tracking_block} skyriuje).
 \end{itemize}
 
-Pasinaudojus \refeq{eq:snr_integration} ir \refeq{eq:snr_moment} galime išreiktšti
+Pasinaudojus \refeq{eq:snr_integration} ir \refeq{eq:snr_moment} galime išreikšti
 $C/N_0$ vertę $\mathrm{dB-Hz}$ vienetais:
 
 \begin{equation}

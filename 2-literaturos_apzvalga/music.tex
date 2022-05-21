@@ -6,11 +6,11 @@
 \subsection{Spindulio krypties nustatymas}\label{sec:music}
 
 Apdorojant signalus iš antenų masyvų, galima ne tik atlikti spindulio
-formavimą, galima ir aptikti signalo siųstyvo ar kelių siųstyvų kryptis.
+formavimą, galima ir aptikti signalo siųstuvo ar kelių siųstuvų kryptis.
 Vienas iš metodų signalų apdorojimo metodų yra MUSIC (angl. Multiple Signal Classification)
-algoritmas kuris gali nustatyti kelių signalų krytpis \cite{1143830}.
+algoritmas kuris gali nustatyti kelių signalų kryptis \cite{1143830}.
 
-Signalo modelis aprašo imtuvo gautus duomenis su išiustas siųstuvo. Tarkime, kad
+Signalo modelis aprašo imtuvo gautus duomenis per siųstuvo siunčiamą signalą. Tarkime, kad
 turime $D$ nekoreliuotų ar dalinai koreliuotų signalų šaltinių $s_d(t)$. Imtuvo
 duomenys $x_m(t)$ yra sudaryti iš signalų, priimtų antenų masyve, kartu su triukšmu
 $n_m(t)$.
@@ -33,7 +33,7 @@ $n_m(t)$.
     yra sudarytas iš reliatyvių fazės skirtumų tarp antenų iš vieno signalo šaltinio. Kiekvienas
     $A$ stulpelis parodo atskirą signalo šaltinį su savo priėmimo kryptimi;
     \item $s(t)$ yra $D\times 1$ vektorius priimtų signalų antenų masyve;
-    \item $n(t)$ imtuvo tiurkšmų vertės.
+    \item $n(t)$ imtuvo triukšmų vertės.
 \end{itemize}
 
 Svarbus kiekvieno poerdvinio metodo dydis yra sensorių kovariantiškumo matrica $R_x$.
@@ -53,12 +53,12 @@ signalų kovariantiškumo matricą ir triukšmų kovariantiškumo matricą:
 \noindent Nekoreliuotiems ar dalinai koreliuotiems šaltiniams $R_s$ yra Ermito matrica
 ir turi pilną rangą $D$.
 
-MUSIC algoritmas daro prielaidą, kad triukšmų galia visuose imtuvuose yra vienoda
-ir jie yra nekoreliuoti. Tokia prieliadą triukšmų kovariantiškumo matrica patampa
+Taikant MUSIC algoritmą, darome prielaidą, kad triukšmų galia visuose imtuvuose yra vienoda
+ir jie yra nekoreliuoti. Padarius tokią prielaidą, triukšmų kovariantiškumo matrica patampa
 su lygiomis vertėmis įstrižainėje. Kadangi tikroji sensorių kovariantiškumo matrica
 yra nežinoma, MUSIC algoritmas įvertina sensorių kovariantiškumo matricą $R_x$
-iš priimto signalo kovariantiškumo matricos. Primto signalo kovarintiškumo matrica
-yra viduriks kelių atskirų matavimų:
+iš priimto signalo kovariantiškumo matricos. Priimto signalo kovariantiškumo matrica
+yra vidurkis kelių atskirų matavimų:
 
 \begin{equation}
     R_x = \frac{1}{T} \sum^T_{k=1} {x(t)x(t)^H}.
@@ -67,7 +67,7 @@ yra viduriks kelių atskirų matavimų:
 Kadangi matrica $AR_sA^H$ turi rangą $D$, ji turi $D$ teigiamų tikrinių verčių ir
 $M-D$ nulinių tikrinių verčių.
 Tikriniai vektoriai turinti teigiamas vertes padengia signalų poerdvį $U_s=[v_1,v_2,...,v_D]$.
-Tikriniai vektoriai turintis nulines vertes yra statatmeni signalo poerdviui ir apimą
+Tikriniai vektoriai turintys nulines vertes yra statmeni signalo poerdviui ir apimą
 nulinį poerdvį $U_n=[u_{D+1},...,u_N]$. Nuliniai poerdvio vektoriai turi tenkinti
 šią sąlyga:
 
@@ -76,8 +76,8 @@ nulinį poerdvį $U_n=[u_{D+1},...,u_N]$. Nuliniai poerdvio vektoriai turi tenki
 \end{equation}
 
 Pridėjus triukšmus prie tikrinių signalo vektorių sensorių kovariantiškumo matricos, ji
-išlieka nepakitusi. Prie tikrinės vertės prisideda tirukšmų galia. Tarkime
-$v_i$ vienas iš betriuškmių signalo poerdvio tikrinių vektorių:
+išlieka nepakitusi. Prie tikrinės vertės prisideda triukšmų galia. Tarkime
+$v_i$ vienas iš betriukšmių signalo poerdvio tikrinių vektorių:
 
 \begin{equation}
     R_xv_i=AR_sA^Hv_i+\sigma^2_0Iv_i = (\lambda_i + \sigma^2_0)v_i.
@@ -91,18 +91,18 @@ vektorius. Tarkime $u_i$ yra vienas iš nulinių tikrinių vektorių:
 \end{equation}
 
 \noindent tikrinėms vertėms esant $\sigma^2_0$ vietoje nulinės vertės, nulinis
-poerdvis patampa tirukšmų poerdviu.
+poerdvis patampa triukšmų poerdviu.
 
-MUSIC algoritmas veikia paieškos principu, ieškant visų priėmimo vektoriu kurie
+MUSIC algoritmas veikia paieškos principu, ieškant visų priėmimo vektorių kurie
 yra statmeni triukšmų poerdviui. Tam kad atlikti paiešką algoritmas sukuria
-nuo priėmimo kampo priklausantį galios išraišką, vadinamą MUSIC pseudospektu:
+nuo priėmimo kampo priklausantį galios išraišką, vadinamą MUSIC pseudospektru:
 
 \begin{equation}
     P_{MUSIC}(\overrightarrow{\phi}) = \frac{1}{a^H(\overrightarrow{\phi})U_nU_n^Ha(\overrightarrow{\phi})}.
 \end{equation}
 
-\noindent Kai signalo vektorius yra statmenas tirukšmų poerdviui, pseudospektro maksimumai
-yra begaliniai. Taikant algoritmą praktiškai vektoriai niekada nėra visiškai statmeni,
+\noindent Kai signalo vektorius yra statmenas triukšmų poerdviui, pseudospektro maksimumai
+yra begaliniai. Taikant algoritmą praktiškai, vektoriai niekada nėra visiškai statmeni,
 todėl sklidimo kampai yra nustatomi iš $P_{MUSIC}$ maksimumų.
 
 \end{document}
