@@ -5,15 +5,15 @@
 
 \subsection{GPS sistema}
 
-GPS (angl. Global Positioning system), yra palydovais paremta navigacinė
+GPS (angl. Global Positioning system) yra palydovais paremta navigacinė
 sistema, priklausanti Jungtinėms Amerikos Valstijoms. Ši sistema yra viena
 iš kelių globalių navigacinių (GNSS) sistemų. Naudojantis GPS sistema,
 galima nustatyti vartotojo buvimo vietą (ilgumą, platumą, aukštį), bei
 galima tiksliai susinchronizuoti laiką. Šiuo metu yra teikiamos dvi GPS paslaugos:
 
 \begin{itemize}
-    \item Tikslaus pozicionavimo paslauga (PPS)\cite{pps_standard}, skirta kariniam naudojimui
-    \item Standartinė pozicionavimo paslauga (SPS)\cite{sps_standard},
+    \item Tikslaus pozicionavimo paslauga (PPS)\cite{pps_standard} skirta kariniam naudojimui
+    \item Standartinė pozicionavimo paslauga (SPS)\cite{sps_standard}
     atvira civiliniam naudojimui.
 \end{itemize}
 
@@ -22,14 +22,14 @@ galima tiksliai susinchronizuoti laiką. Šiuo metu yra teikiamos dvi GPS paslau
 \subsubsection{Pozicijos ir laiko nustatymas}
 
 Kad imtuvas galėtų nusistatyti savo poziciją, jam reikia priimti signalą bent
-iš 4 palydovų. GPS signalas sudarytas taip, būtų galima išmatuoti atstumą iki
+iš 4 palydovų. GPS signalas sudarytas taip, kad būtų galima išmatuoti atstumą iki
 kiekvieno palydovo, signale yra užkoduotas išsiuntimo laikas, todėl priėmus
 signalą iš palydovo, žinant tikslų imtuvo laiką ($t_{imtuvo}$), sklidimo greitį ($c$),
 išsiuntimo laiką ($t_{siustuvo}$), galima išmatuoti signalo keliavimo trukmę ir suskaičiuoti
 atstumą ($l$) iki palydovo:
 
 \begin{equation}
-    l = c (t_{imtuvo} - t_{siustuvo})
+    l = c (t_{imtuvo} - t_{siustuvo}).
 \end{equation}
 
 \subsubsection{GPS signalas}\label{sec:gps_signal}
@@ -44,14 +44,14 @@ bus nagrinėjamas tik L1 signalas.
 L1 signalo nešlys susideda iš dviejų komponentų kurių fazė skiriasi $90\degree$.
 Kiekvienas nešlio komponentas yra faziškai moduliuojamas atskirų skaitmeninių signalų.
 Pirmasis nešlio komponentas yra koduojamas P(Y) kodo ir LNAV duomenų (50 bitų/s) suma.
-P(Y) kodas yra skirtas tikslios pozicijos nustatymui, ir šiuo metu jis yra užkuoduotas
+P(Y) kodas yra skirtas tikslios pozicijos nustatymui, ir šiuo metu jis yra užkoduotas
 kariniam naudojimui.
-LNAV duomenys yra skirti, perduoti imtuvui tam tikrus GPS sistemos parametrus, tokius
+LNAV duomenys yra skirti perduoti imtuvui tam tikrus GPS sistemos parametrus, tokius
 kaip orbitos duomenis, laikrodžio korekcijos ir kita.
 Antroji nešlio dalis yra moduliuojama C/A (netikslaus sekimo) kodu ir tais pačiai LNAV
 duomenimis. C/A kodas yra 1023 "čirpų" ilgio ir jo dažnis yra $1.023\ \mathrm{MHz}$.
 C/A kodas yra naudojamas signalo sklidimo trukmei matuoti. GPS signalas gali būti
-aptašomas šia lygtimi:
+aprašomas šia lygtimi:
 
 \begin{equation}
     x_{IN}[k] = A(t) \widetilde{s_T}(t-\tau(t))e^{j(2\pi f_D(t)t+\phi(t))} |_{t=kT_s} + n(t) |_{t=kT_s},
@@ -74,7 +74,7 @@ kad jis būtų pseudo-atsitiktinis kodas (PRN), kiekvienam palydovui yra suteikt
 Svarbiausia PRN savybė - autokoreliacijos rezultato maksimumas yra tik
 ties 0 tašku \cite{OCHIN202121_chapter2}.
 
-Imtuvai ieškodami palydavo signalo, susigeneruoja ieškomo palydovo unikalią C/A signalo
+Imtuvai ieškodami palydovo signalo, susigeneruoja ieškomo palydovo unikalią C/A signalo
 kopiją ir atlieka koreliaciją tarp lokaliai sugeneruoto signalo ir priimto.
 Iš gauto koreliacijos rezultato galima nustatyti gauto C/A signalo užlaikymą.
 
@@ -97,7 +97,7 @@ pozicijos paklaidos iki kelių metrų \cite{KUMAR20213_chapter1}.
 
 GPS signalų sąveika su aplinka, pastatais, reljefu, sukelia atspindžių paklaidas. Kadangi
 atsispindėjęs signalas nukeliauja didesnį atstumą, naudojantis tokiu signalu nebeįmanoma
-tiksliai nustatyti atstumo iki palydovo, ko pasėkoje mažėja galutinės pozicijos tikslumas.
+tiksliai nustatyti atstumo iki palydovo, dėl to mažėja galutinės pozicijos tikslumas.
 
 Atmosferinės paklaidos atsiranda dėl radijo bangų sklidimo parametrų kitimo atmosferoje ir
 jonosferoje, kadangi parametrai pastoviai kinta laike, dėl besikeičiančių atmosferos/jonosferos

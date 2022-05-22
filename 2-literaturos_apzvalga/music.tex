@@ -31,7 +31,7 @@ $n_m(t)$.
 
 \begin{itemize}
     \item $x(t)$ yra vektorius priimtų signalų iš antenų masyvų. Vektoriaus dydis yra $M$;
-    \item $A$ - $M\times D$ matrica kurioje yra signalo priėmimo krypčių vektoriai. Vektorius
+    \item $A$ - $M\times D$ matrica, kurioje yra signalo priėmimo krypčių vektoriai. Vektorius
     yra sudarytas iš reliatyvių fazės skirtumų tarp antenų iš vieno signalo šaltinio. Kiekvienas
     $A$ stulpelis parodo atskirą signalo šaltinį su savo priėmimo kryptimi;
     \item $s(t)$ yra $D\times 1$ vektorius priimtų signalų antenų masyve;
@@ -71,7 +71,7 @@ $M-D$ nulinių tikrinių verčių.
 Tikriniai vektoriai turintys teigiamas vertes padengia signalų poerdvį $U_s=[v_1,v_2,...,v_D]$.
 Tikriniai vektoriai turintys nulines vertes yra statmeni signalo poerdviui ir apimą
 nulinį poerdvį $U_n=[u_{D+1},...,u_N]$. Nuliniai poerdvio vektoriai turi tenkinti
-šią sąlyga:
+šią sąlygą:
 
 \begin{equation}
     AR_sA^Hu_i=0 \Rightarrow u^HAR_sA^Hu_i = 0 \Rightarrow (A^Hu_i)^HR_s(A^Hu_i)=0 \Rightarrow A^Hu_i=0.
@@ -95,7 +95,7 @@ vektorius. Tarkime $u_i$ yra vienas iš nulinių tikrinių vektorių:
 \noindent tikrinėms vertėms esant $\sigma^2_0$ vietoje nulinės vertės, nulinis
 poerdvis patampa triukšmų poerdviu.
 
-MUSIC algoritmas veikia paieškos principu, ieškant visų priėmimo vektorių kurie
+MUSIC algoritmas veikia paieškos principu, ieškant visų priėmimo vektorių, kurie
 yra statmeni triukšmų poerdviui. Tam kad atlikti paiešką algoritmas sukuria
 nuo priėmimo kampo priklausantį galios išraišką, vadinamą MUSIC pseudospektru:
 

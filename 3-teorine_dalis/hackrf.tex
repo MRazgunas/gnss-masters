@@ -26,13 +26,13 @@ kitų imtuvų CLK IN, taip gaunama dažnio sinchronizacija, kadangi
 visi imtuvai generuojasi taktinius dažnius iš to pačio šaltinio.
 
 Laiko sinchronizaciją pasiekti yra sudėtingiau. Prieš pradedant duomenų nuskaitymą,
-kompiuterio operacinė sistema (OS), išsiunčia nuskaitymo pradžios komandą.
-Kadangi OS sistema yra nenuspėjama, atsiranda tam tikri uždelsimai, tarp
+kompiuterio operacinė sistema (OS) išsiunčia nuskaitymo pradžios komandą.
+Kadangi OS sistema yra nenuspėjama, atsiranda tam tikri uždelsimai tarp
 visų nuskaitymo komandų. Kadangi imtuvai pradeda skaityti skirtingu metu,
 nebeįmanoma sulyginti IQ taškų gautų kompiuteryje. Vienas iš galimų sprendimų
-yra susinchronizuoti visų imtuvų nuskaitymo pradžia pasitelkus signalu,
+yra susinchronizuoti visų imtuvų nuskaitymo pradžią pasitelkus signalu,
 kuris perduodamas ne per USB, tačiau tiesiogiai tarp imtuvų.
-Toks metodas buvo ištyrinėtas ir nustatytą, kad pasiekiama sinchronizaciją
+Toks metodas buvo ištyrinėtas ir nustatyta, kad pasiekiama sinchronizaciją
 geresnė negu 1 nuskaitymo taškas \cite{hackrf_sync}.
 
 \begin{figure}[h]

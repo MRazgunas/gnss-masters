@@ -13,7 +13,7 @@ nuo 2011 metų.
 GNSS signalų apdorojimas yra intensyvus procesas,
 todėl norint apdoroti juos realiu laiku, reikalingos optimizacijos,
 kurios pilnai išnaudotų kompiuterio resursus. Norint išnaudoti resursus,
-visus skaičiavimus reikia lygia gretinti, tačiau tai nėra tokia
+visus skaičiavimus reikia lygiagretinti, tačiau tai nėra tokia
 paprasta užduotis. Ši problema jau yra išspręsta GNU Radio projekto,
 todėl GNSS-SDR pasitelkia šį įrankį signalų apdorojimui.
 
@@ -26,8 +26,8 @@ todėl GNSS-SDR pasitelkia šį įrankį signalų apdorojimui.
 
 Signalo apdorojimas prasideda nuo duomenų šaltinio (angl. Signal Source). Duomenų šaltiniu
 gali būti arba SDR imtuvas, arba duomenų failas. Dažniausiai SDR imtuvas naudojamas,
-kai duomenys yra apdorojami realiu laiku, o duomenų failas, kai duomenis yra apdorojami
-vėliau, taip pat duomenų failas yra patogesnis naudojimui kai yra tobulinamas GNSS SDR
+kai duomenys yra apdorojami realiu laiku, o duomenų failas, kai duomenys yra apdorojami
+vėliau, taip pat duomenų failas yra patogesnis naudojimui, kai yra tobulinamas GNSS SDR
 programinis kodas, kadangi galima nesunkiai lyginti imtuvo kokybę su tuo pačiu signalu.
 
 Duomenys iš šaltinio turi būti pritaikyti prie vidinio formato. Signalo šaltiniai
@@ -73,16 +73,16 @@ signalo kopija, $K$ - taškų skaičius naudojamas koreliacijai.
 
 Signalo sekimas yra pasiekiamas pasinaudojus uždaro kontūro sistemomis,
 kurios yra su\-pro\-jek\-tuo\-tos taip, kad minimizuotų skirtumus tarp kodo užlaikymo,
-Doplerio dažnio ir nešlio fazės lyginant su lokalia signalo kopiją $d[k]$.
+Doplerio dažnio ir nešlio fazės lyginant su lokalia signalo kopija $d[k]$.
 
 GNSS signalų atveju imtuvas skaičiuoja 3-jų signalų $R_{xd}$ koreliacijas:
 paankstinto signalo $E=R_{xd}(\hat{\tau} + \epsilon)$,
 tikrasis signalas $P=R_{xd}(\hat{\tau})$,
 pavėlintas signalas $L=R_{xd}(\hat{\tau} - \epsilon)$.
 Atlikus koreliacijas, palyginami rezultatai ir taip nustatoma
-ar lokali signalo kopiją atsilieka, skuba ar tiksliai atkartoja
-priimama signalą. Atlikus skaičiavimus atnaujinama lokali signalo kopija
-ir vėl viskas vykdoma iš naujo. Blokinė diagrama signalo sekimo pavaizduota
+ar lokali signalo kopija atsilieka, skuba, ar tiksliai atkartoja
+priimamą signalą. Atlikus skaičiavimus atnaujinama lokali signalo kopija
+ir vėl viskas vykdoma iš naujo. Signalo sekimo blokinė diagrama pavaizduota
 \ref{fig:gnss_sdr_tracking_block}~pav.
 
 \begin{figure}[h]

@@ -6,10 +6,10 @@
 \subsection{Imtuvų fazės kalibravimas naudojant GNSS signalą}\label{sec:phase_clib_using_gnss}
 
 Kaip aprašyta ankstesniuose skyriuose, naudojant HackRF SDR imtuvus, kiekvieno
-matavimo pradžioje reikalingas fazinis imtuvų kalibravimas. Tam kad supaprastinti
+matavimo pradžioje reikalingas fazinis imtuvų kalibravimas. Tam, kad supaprastinti
 matavimo metodiką, faziniam kalibravimui naudojamas priimamas GPS signalas.
 
-Tam kad būtų galima atlikti fazių nuokrypio įvertinimą, palydovas, naudojamas kalibravimui,
+Tam, kad būtų galima atlikti fazių nuokrypio įvertinimą, palydovas, naudojamas kalibravimui,
 turi būti gerai matomas, bei jis turi būti dangaus skliauto viršuje.
 Kai palydovas yra statmenai antenų masyvui, visos priimamos fazės visuose
 imtuvuose turi būti lygios 0. Dėl šios priežasties, matavimus reikia
@@ -63,8 +63,8 @@ Koreliacijos rezultatai yra perduodami MUSIC algoritmui, kurio
 įgyvendinimas atliktas panaudojus Python biblioteka "doatools.py" \cite{7738579}.
 
 \ref{fig:gnss_sdr_tracking_block_doa}~pav. blokas yra vykdomas visuose
-GNSS imtuvo kanaluose, todėl galime visų matomų palydovų signalų kryptys
-yra nustatomos nepriklausomai. Gavus signalų kryptis ir žinant tikrąsias
+GNSS imtuvo kanaluose, todėl galime visų matomų palydovų signalų kryptis
+nustatyti nepriklausomai. Gavus signalų kryptis ir žinant tikrąsias
 palydovų padėtis galime pritaikyti spindulio formavimo algoritmą
 arba pozicijos skaičiavimams nenaudoti palydovų, kurių signalas
 yra priimamas netiesiogiai.
