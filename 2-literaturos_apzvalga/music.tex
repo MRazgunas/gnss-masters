@@ -6,9 +6,11 @@
 \subsection{Spindulio krypties nustatymas}\label{sec:music}
 
 Apdorojant signalus iš antenų masyvų, galima ne tik atlikti spindulio
-formavimą, galima ir aptikti signalo siųstuvo ar kelių siųstuvų kryptis.
-Vienas iš metodų signalų apdorojimo metodų yra MUSIC (angl. Multiple Signal Classification)
-algoritmas kuris gali nustatyti kelių signalų kryptis \cite{1143830}.
+formavimą, tačiau ir aptikti siųstuvų padėtis antenų masyvo atžvilgiu.
+Vienas iš signalų apdorojimo metodų yra MUSIC (angl. Multiple Signal Classification)
+algoritmas kuris gali nustatyti kelių signalų kryptis.
+Šis algoritmas buvo išrastas Schmidt \cite{1143830} ir nepriklausomai
+Bienvenu ir Kopp \cite{1171029}, \cite{1164185}.
 
 Signalo modelis aprašo imtuvo gautus duomenis per siųstuvo siunčiamą signalą. Tarkime, kad
 turime $D$ nekoreliuotų ar dalinai koreliuotų signalų šaltinių $s_d(t)$. Imtuvo
@@ -37,7 +39,7 @@ $n_m(t)$.
 \end{itemize}
 
 Svarbus kiekvieno poerdvinio metodo dydis yra sensorių kovariantiškumo matrica $R_x$.
-Kai signalų triukšmai nėra koreliuoti, imtuvų kovariantiškumo matricos turi du komponentus:
+Kai signalų triukšmai nėra koreliuoti, imtuvų kovariantiškumo matricos turi du komponentus,
 signalų kovariantiškumo matricą ir triukšmų kovariantiškumo matricą:
 
 \begin{equation}
@@ -47,10 +49,10 @@ signalų kovariantiškumo matricą ir triukšmų kovariantiškumo matricą:
 \noindent čia $R_s$ signalo kovariantiškumo matrica:
 
 \begin{equation}
-    R_s=E{ss^H}
+    R_s=E{ss^H}.
 \end{equation}
 
-\noindent Nekoreliuotiems ar dalinai koreliuotiems šaltiniams $R_s$ yra Ermito matrica
+\noindent Nekoreliuotiems ar dalinai koreliuotiems šaltiniams, $R_s$ yra Ermito matrica
 ir turi pilną rangą $D$.
 
 Taikant MUSIC algoritmą, darome prielaidą, kad triukšmų galia visuose imtuvuose yra vienoda
@@ -66,7 +68,7 @@ yra vidurkis kelių atskirų matavimų:
 
 Kadangi matrica $AR_sA^H$ turi rangą $D$, ji turi $D$ teigiamų tikrinių verčių ir
 $M-D$ nulinių tikrinių verčių.
-Tikriniai vektoriai turinti teigiamas vertes padengia signalų poerdvį $U_s=[v_1,v_2,...,v_D]$.
+Tikriniai vektoriai turintys teigiamas vertes padengia signalų poerdvį $U_s=[v_1,v_2,...,v_D]$.
 Tikriniai vektoriai turintys nulines vertes yra statmeni signalo poerdviui ir apimą
 nulinį poerdvį $U_n=[u_{D+1},...,u_N]$. Nuliniai poerdvio vektoriai turi tenkinti
 šią sąlyga:

@@ -27,36 +27,15 @@ imtuvo atskirai ir duomenų apdorojimas vykdomas šia tvarka:
     \item Duomenys apdorojami taikant spindulio formavimo algoritmą;
 \end{enumerate}
 
-\subsubsection{Fazės kalibravimas naudojant GNSS signalą}
+\subsubsection{Imtuvo fazės kalibravimo rezultatas naudojant GPS signalą}
 
-Kaip aprašyta ankstesniuose skyriuose, naudojant HackRF SDR imtuvus, kiekvieno
-matavimo pradžioje reikalingas fazinis imtuvų kalibravimas. Tam kad supaprastinti
-matavimo metodiką, faziniam kalibravimui naudojamas priimamas GPS signalas.
-
-Tam kad būtų galima atlikti kalibravimą, palydovas, naudojamas kalibravimui,
-turi būti gerai matomas, bei jis turi būti dangaus skliauto viršuje.
-Kai palydovas yra statmenai antenų masyvui, visos priimamos fazės visuose
-imtuvuose turi būti lygios 0. Dėl šios priežasties, matavimus reikia
-planuotis iš anksto, tuo laiku kai bent vienas palydovas yra
-kuo aukščiau virš horizonto. Vieno iš toliau pateiktų matavimų,
-palydovų pozicijos pateiktos \ref{fig:gnss_sat_pos_calibartion}~pav.,
-kalibravimui naudotas PRN29 palydovas.
-
-\begin{figure}[ht]
-    \begin{centering}
-    \includegraphics[scale=1.2]{drawings/gnss_sattelites_position}
-    \par\end{centering}
-    \protect\caption{\label{fig:gnss_sat_pos_calibartion}GPS palydovų pozicijos dangaus skliaute, adresu Saulėtekio al. 9, Vilnius, 2022-05-11 13:20.}
-\end{figure}
-
-Kalibravimas atliekamas lyginant vienos iš antenų fazę, su kitų trijų antenų fazėmis.
-Atliekamas vidurkio skaičiavimas, gauta vertė atitinka fazės nuokrypį nuo tikrosios
-fazės, ši vertė naudojama fazės poslinkiui visuose skaičiavimuose.
-
-Jeigu palydovas nėra statmenas antenų masyvui, pritaikius spindulio formavimo
-algoritmą, galime suskaičiuoti fazes kiekvienoje antenoje ir šis pokrypis
-yra pridedamas prie nulinės fazės. Fazių kalibravimo pavyzdys pateiktas
-\ref{fig:gnss_phase_calibration}~pav.
+Imtuvų fazės kalibravimas yra atliakasm \ref{sec:phase_clib_using_gnss}~skyriuje
+aprašytu metodu. \ref{fig:gnss_phase_calibration}~pav. pateiktos
+antenų fazės prieš kalibravimą ir po kalibravimo. Iš grafiko matoma,
+kad be kalibravimo fazės nuokrypis yra atsitiktinis, todėl šis signalas
+negali būti naudojamas algoritmų įgyvendinimui. Pritaikius kalibravimą,
+visų antenų fazių poslinkiai yra surandami ir iš grafiko galime nustatyti,
+kad fazės reikšmingai nekinta.
 
 \begin{figure}[ht]
     \begin{centering}
@@ -67,7 +46,7 @@ yra pridedamas prie nulinės fazės. Fazių kalibravimo pavyzdys pateiktas
 
 \subsubsection{GNSS signalų priėmimas kai nėra kliūčių}\label{sec:gnss_meas_no_reflection}
 
-Pirmam matavimui buvo pasirinkta atvira vietovė, kurioje dangaus skliautas nėra blokuojamas
+Pirmam matavimui buvo parinkta atvira vietovė, kurioje dangaus skliautas nėra blokuojamas
 jokių kliūčių. Matavimas buvo atliekamas 10 minučių, fazės kalibravimas atliktas pagal PRN18 palydovą.
 \ref{fig:no_reflection_sat_pos}~pav. kairėje pavaizduota matavimų metu buvęs palydovų išsidėstymas
 dangaus skliaute. Kadangi PRN18 yra aukščiausiai esantis palydovas, jis buvo pasirinktas
@@ -95,7 +74,7 @@ Taip pat kadangi yra tik vienas maksimumas, galime daryti išvadą, kad šioje m
 imtuvas nemato signalo atspindžių ir priima tik tiesioginį palydovo signalą.
 PRN18 grafike maksimumas tiksliausiai sutampa su tikrąja palydovo pozicija, kadangi
 fazinis kalibravimas buvo atliekama pagal šį palydovą.
-Kitų palydovų tikrojo pozicija turi tam tikras paklaidas ir nesutampa su MUSIC pseudospektro
+Kitų palydovų tikroji pozicija turi tam tikras paklaidas ir nesutampa su MUSIC pseudospektro
 maksimumu. Tam yra kelios pagrindinės priežastys:
 
 \begin{itemize}
@@ -123,7 +102,8 @@ metodiką.
 
 Spindulio formavimas atliekamas maksimumą nukreipiant į tikrąją palydovo padėti.
 \ref{fig:no_reflection_snr}~pav. galima stebėti, kad naudojant spindulio formavimą,
-signalo triukšmo santykis pagerėja nuo $2\ \mathrm{dB-Hz}$. iki $8\ \mathrm{dB-Hz}$.
+signalo triukšmo santykis pagerėja nuo $2\ \mathrm{dB}$. iki $8\ \mathrm{dB}$ lyginant
+su signalo triukšmo santykiu be spindulio formavimo.
 Kadangi naudojamos 4 antenos, tai numatomas signalo pagerėjimas yra $6\ \mathrm{dB}$,
 kas ir yra stebima signalo triukšmo santykio matavimuose. Taip pat PRN10 ir PRN27 atveju,
 nenaudojant spindulio formavimo palydovo signalas buvo per silpnas, kad būtų
@@ -138,10 +118,10 @@ daugiau palydovų, kas leidžia tiksliau nustatyti imtuvo poziciją.
 \end{figure}
 
 Atlikus spindulio formavimą, suskaičiuotos koordinatės pavaizduotos \ref{fig:no_reflection_map}~pav.
-Iš grafiko galime matyti, kad koordinatės taškų išsibarstymas truputį sumažėjo, tačiau reikšmingų
+Iš grafiko galime nustatyti, kad koordinatės taškų išsibarstymas nežymiai sumažėjo, tačiau reikšmingų
 pokyčių nėra. Šį rezultatą pagrinde įtakoja geresnis signalo triukšmo santykis, bei atsiradę du papildomi
-palydovai, kaip aptarta šio skyrelio pradžioje. Kadangi \ref{fig:no_reflection}~pav. atspindžių
-nematome, tai šiam matavimui atspindžiai nesudarė papildomo trikdžio koordinačių skaičiavime.
+palydovai, kaip aptarta šio skyrelio pradžioje. Kadangi \ref{fig:no_reflection}~pav. atspindžiai
+nėra stebimi, tai šiam matavimui atspindžiai nesudarė papildomo trukdžio koordinačių skaičiavime.
 
 \begin{figure}[ht]
     \begin{centering}
@@ -156,8 +136,8 @@ nematome, tai šiam matavimui atspindžiai nesudarė papildomo trikdžio koordin
 
 Antras matavimas buvo daromas vietovėje kur yra vienas, nedidelis pastatas, nuo kurio gali atsirasti
 signalo atspindžiai. Matavimo vieta ir laikas (palydovų išsidėstymas) pavaizduoti \ref{fig:two_reflection_sat_pos}~pav.
-Vieta pasirinkta taip kad dalis dangaus skliauto būtų atviras, o kita dalis būtų blokuojama pastato.
-palydovų išsidėstymas parinktas taip, kad jų signalas, kristu kuo statmeniau į pastato paviršių.
+Vieta parinkta taip, kad dalis dangaus skliauto būtų atviras, o kita dalis būtų blokuojama pastato.
+Palydovų išsidėstymas parinktas taip, kad jų signalas, kristu kuo statmeniau į pastato paviršių.
 Palydovinėje nuotraukoje raudonu kryžiuku pažymėta apytikslė matavimų vieta. Raudonos rodykles
 vaizduoja apytiksles palydovų signalų kryptis. Iš signalų krypčių, galime mėginti spėti,
 kad atspindys bus matomas PRN21 ir PRN08 palydovų.
@@ -175,7 +155,7 @@ pastato aukštį ir apytiksles pasaulio šalis. Grafike dauguma palydovų turi v
 aiškų maksimumą, tačiau PRN08 turi du maksimumus: vieną labai stiprų ir kitą silpnesnį.
 PRN21 turi 2 beveik identiškus maksimumus.
 Abiem atvejais stipresnės pseudospektro vertės yra stebimos tiesiogiai atėjusio signalo, tačiau
-matomas ir atspindys nuo šalia esančio pastato. Iš šių matavimų matome, kad vyksta atspindžiai
+matomas ir atspindys nuo šalia esančio pastato. Iš šių matavimų galima nustatyti, kad vyksta atspindžiai
 nuo pastato ir tai galimai sukelią trukdį koordinačių skaičiavime.
 Kitų palydovų signalai beveik sutampa su tikrosiomis palydovų padėtimis, tačiau dėl priežasčių aptartų
 \ref{sec:gnss_meas_no_reflection} skyriuje, maksimumai tiksliai nesutampa su tikrosiomis palydovų padėtimis.
@@ -190,7 +170,7 @@ Kitų palydovų signalai beveik sutampa su tikrosiomis palydovų padėtimis, ta�
 \ref{fig:single_reflection_snr}~pav. pavaizduotas signalo triukšmo santykis atliekant spindulio formavimą,
 maksimumą nutaikant į tikrąją palydovo padėtį. Kaip ir pirmojo matavimo atveju, stebimas signalo triukšmo
 santykio padidėjimas
-nuo $2\ \mathrm{dB-Hz}$ iki $8\ \mathrm{dB-Hz}$. Kaip ir pirmuoju atveju,
+nuo $2\ \mathrm{dB}$ iki $8\ \mathrm{dB}$, taip pat
 imtuvas priima signalą iš vieno papildomo palydovo, kai vykdomas spindulio formavimas.
 
 \begin{figure}[ht]
@@ -204,7 +184,7 @@ Iš \ref{fig:single_reflection_map}~pav. galime nustatyti, kad koordinačių nuo
 formavimą, bei vidutinė koordinatė pasistūmė toliau nuo pastato. Iš vidutinės koordinatės pokyčio
 galime daryti išvadą, kad taikant spindulio formavimą, buvo nuslopintas atspindys. Esant atspindžiui,
 koordinatė priartėja prie pastato, kadangi signalo kelias atsispindint nuo pastato pailgėja, dingus
-atspindžiui signalo kelias sutrumpėja ir imtuvo koordinate gaunama esanti arčiau palydovo.
+atspindžiui signalo kelias sutrumpėja ir imtuvo koordinate gaunama esanti arčiau palydovo (toliau nuo pastato).
 Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
 
 
@@ -217,9 +197,9 @@ Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
 
 \subsubsection{GNSS signalų priėmimas urbanistinėje aplinkoje}\label{sec:gnss_meas_two_reflection}
 
-Trečiajam matavimui pasirinkta vieta su dviem aukštais pastatais.
+Trečiajam matavimui parinkta vieta su dviem aukštais pastatais.
 \ref{fig:two_reflection_sat_pos}~pav. raudonu kryžiuku pažymėta apytikslė matavimų
-vieta. Rytuose ir vakaruose yra du aukšti pastatai, kurie blokuoja tiesioginį signalą. 
+vieta. Rytuose ir vakaruose yra du aukšti pastatai, kurie blokuoja tiesioginius palydovų signalus. 
 \ref{fig:two_reflection_sat_pos}~pav. kairėje pavaizduotas palydovų išsidėstymas
 matavimo metu, juodumomis rodyklėmis pažymėta palydovų judėjimo kryptis.
 
@@ -230,10 +210,10 @@ matavimo metu, juodumomis rodyklėmis pažymėta palydovų judėjimo kryptis.
     \protect\caption{\label{fig:two_reflection_sat_pos}Kairėje palydovų išsidėstymas dangaus skliaute matavimų metu, dešinėje matavimo vietovės palydovinė nuotrauka \cite{google_maps}.}
 \end{figure}
 
-\ref{fig:two_reflection}~pav. pavaizduota nustatytos palydovų signalų kryptis.
-Panoraminėje nuotraukoje matome, kad rytuose ir vakaruose yra du aukšti pastatai.
+\ref{fig:two_reflection}~pav. pavaizduota nustatytos palydovų signalų kryptys.
+Panoraminėje nuotraukoje matoma, kad rytuose ir vakaruose yra du aukšti pastatai.
 PRN2 galime matyti, kad signalas gaunamas tiesioginis, bet iš
-\ref{fig:two_reflection_sat_pos}~pav. galime matyti, kad palydovas netrukus
+\ref{fig:two_reflection_sat_pos}~pav. galime nuspėti, kad palydovas netrukus
 pasislėps už pastato. Taip pat stebime nestiprų atspindį nuo pastato vakaruose
 (apie $-60$ laipsnių). PRN31 palydovo atveju, tikroji padėtis yra apie $-120$
 laipsnių kryptimi, bet čia joks signalas nestebimas, tačiau imtuvas stebi stiprų

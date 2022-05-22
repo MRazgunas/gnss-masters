@@ -3,44 +3,12 @@
 
 \begin{document}
 
-\subsection{Spindulio formavimo matavimai}\label{sec:beam_form_results}
+\subsection{Spindulio formavimo rezultatai}\label{sec:beam_form_results}
 
-\subsubsection{Spindulio formavimo matavimo stendas}
-
-Spindulio formos matavimui naudojamas stendas pavaizduotas \ref{fig:beamform_stand}
-pav. Pagrindiniai stendo elementai:
-
-\begin{enumerate}
-    \item HackRF siųstuvas, kuris generuoja CW signalą;
-    \item 1x2 spinduolių sistema sudaryta iš GNSS signalams priimti skirtų antenų;
-    \item Du HackRF koherentiniai imtuvai, susinchronizuoti anksčiau aptartais metodais;
-    \item Siųstuvo stovas, kuris leidžia keisti siųstuvo kampą, spinduolių sistemos atžvilgiu;
-\end{enumerate}
-
-\begin{figure}[h]
-    \begin{centering}
-    \includegraphics[scale=1.0]{drawings/beamform_stand.drawio}
-    \par\end{centering}
-    \protect\caption{\label{fig:beamform_stand}Spindulio formos matavimo stendas.}
-\end{figure}
-
-Matavimai stendu pradedami vertikalioje padėtyje, įjungiamas siųstuvas ir abu imtuvai.
-Atliekant signalų koreliaciją priimtų iš atskirų antenų, patikrinama laikinė sinchronizacija
-ir randamas fazių skirtumas, kuris yra išsaugomas ir pritaikomas vienam iš imtuvų.
-
-Spinduolių diagrama matuojama skaičiuojant priimamo signalo stiprumą: atliekama FFT
-transformacija ir matuojamas maksimumo dydis. Nuskaičius vieną tašką, siųstuvo stovas
-yra pasukamas iki kito kampo. Kampas yra matuojamas pasinaudoju išmaniojo telefono
-akselerometro pagalba. Išmatavus vieno spinduolio diagramą įjungiamas spindulio formavimas
-(signalų sudėtis) ir vėl kartojamas matavimas keičiant vieno iš imtuvo fazę.
-
-% TODO add GNURADIO blocks
-
-\subsubsection{Spindulio formavimo rezultatai}
-
-Matavimai atliekami su 2 spinduolių sistema, pirmas matavimas atliekamas su viena
+Matavimai atliekami \ref{sec:beamform_meas_stand} skyriuje aprašytame stende,
+su 2 spinduolių sistema, pirmas matavimas atliekamas su viena
 antena, antrasis - su dviem antenomis esant 0 fazės skirtumui ir trečias matavimas - su dviem
-spinduoliais ir esant $2\ \mathrm{rad}$ fazės skirtumui. Spinduliai yra išdėstyti $\lambda / 2$ atstumu,
+spinduoliais ir esant $2\ \mathrm{rad}$ fazės skirtumui. Antenos yra išdėstytos $\lambda / 2$ atstumu,
 todėl esant $2\ \mathrm{rad}$ fazės skirtumui, tikimasi, kad diagramos maksimumas bus nukreiptas 40 laipsnių
 kampu.
 
@@ -52,7 +20,7 @@ kampu.
     ir skirtingai fazei tarp spinduolių.}
 \end{figure}
 
-Iš \ref{fig:beamforming_result}~pav. matome, kad naudojant viena spinduolį, diagramos maksimumas
+Iš \ref{fig:beamforming_result}~pav. galima nustatyti, kad naudojant viena spinduolį, diagramos maksimumas
 yra $-19,4\ \mathrm{dB}$ ir yra nukreiptas 0 laipsnių kampu. Įjungus antrą anteną iškarto stebimas
 $3\ \mathrm{dB}$ maksimumo padidėjimas iki $-16,4\ \mathrm{dB}$. Toks signalo padidėjimas reiškia,
 kad priimama galia padidėjo 2 kartus, kadangi signalas priimamas iš dviejų antenų.
@@ -63,8 +31,8 @@ kai fazės pokyčio
 nebuvo. Šis rezultatas sutampa su \refeq{eq:phase_shift_antenna_angle} lygties rezultatu.
 
 Visi matavimų grafikai turi tam tikrus minimumus, ten kur jų neturėtų būti. Jie atsiranda
-dėl stovinčių bangų, kadangi matavimai buvo atlikti patalpoje nuo kurios sienų signalai
-gali atsispindėti. Norint gauti tikslines spinduliavimo diagramas, matavimus reiktų
+dėl stovinčių bangų, kadangi matavimai buvo atlikti patalpoje nuo kurios sienų vyksta
+atsispindžiai. Norint gauti tikslines spinduliavimo diagramas, matavimus reiktų
 atlikti patalpoje, kurioje nėra atspindžių.
 
 Iš gautų rezultatų galime daryti išvada, kad naudojant HackRF imtuvus spindulio formavimas

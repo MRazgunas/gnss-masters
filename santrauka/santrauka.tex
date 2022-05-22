@@ -1,0 +1,58 @@
+% !TEX root = ../gnss_interference_resistant_thesis.tex
+\documentclass[../gnss_interference_resistant_thesis.tex]{subfiles}
+
+\begin{document}
+
+\santrauka{R\&D of Robust to Interferences GNSS Navigation Subsystem for UAVs}{
+
+\iffalse
+Bepiločių orlaiviai, kaip pagrindinį navigacijos instrumentą naudoja GNSS sistemą. Esant
+geroms sąlygoms imtuvas veikia pakankamai patikimai, kad būtų užtrikrintas saugus bepiločio
+orlaivio veikimas. Tačiau didėjant bebiločių orlaivių taikymo sritims, vis dažniau jie yra
+naudojami aplinkose su daugybe įvairių trikdžių.
+Vienas dažniausiais pasitaikančių trikdžių miesto teritojiose yra atspindžiai nuo pastatų.
+Dėl šių atspindžių prastėja GNSS signalo koreliacijos rezultatas, dėl ko gaunama pozicija su
+mažesniu tikslumu.
+
+Pastaraisiais dešimtmečiais plačiai pradėti taikyti antenų masyvai,
+leidžia nuslopinti trigdžius priimama signalui, todėl šiame darbe buvo sukurtas
+GNSS imtuvas kuris pasinaudodamas spindulio formavimo metodais, slopina atspindžių
+trukdžius. Sukonstruotas imtuvas geba aptikti GNSS signalo sklidimo kryptis pasinaudodamas
+MUSIC algoritmu, bei suformavus spindulį priimti palydovų signalus be atspindžių.
+Imtuvo konstrukcijai buvo panaudoti HackRF imtuvai sinchronizuoti laike bei dažnyje.
+
+Šiame darbe buvo tiriamas sukonstruoto imtuvo laikinės ir dažninės sinchronizacijos, pademonstruota,
+kad HackRF imtuvai gali būti pritaikomi spindulio formavimui.
+Ištyrus sukurtą GNSS imtuvą, buvo pademnstuotas signalo ir atspindžių aptikimas skirtingose matavimų vietose:
+vietovėje be atspindžių, vietovėje su nedideliais atspindžių šaltiniais, bei urbanistinėje miesto
+vietovėje. Taikant spindulio formavimą buvo pademonstuotas signalo triukšmo santyko padidėjimas iki
+$8 \mathrm{dB}$, atspindžių slopinimas, bei imtuvo koordinatės pasiskirstymo sumažėjimas.
+\fi
+
+Unmanned Arial Vehicles (UAV) utilize GNSS receivers as the main navigation instrument, in
+ideal conditions receiver works sufficiently well to ensure safe operation of UAV.
+In recent years application fields of UAVs are expanding, and more often, they are used in environments
+with various interference to GNSS signals. One of the most common interference sources
+is a reflection from buildings in urbanized territories, which decreases performance often
+GNSS receiver correlator, which degrades the performance of receiver.
+
+
+In recent decades array processing has been adopted to suppress interference.
+This work created a GNSS receiver, which can attenuate reflection interference
+by utilizing antenna array processing. 
+The receiver can distinguish the direction of signal arrival using the MUSIC algorithm,
+and applying beamforming techniques can improve navigation precision.
+The receiver is constructed with HackRF SDRs, synchronized in time and frequency.
+
+In this work constructed GNSS receiver was studied. It was shown that it is possible
+to synchronize HackRF SDRs, which allows applying MUSIC and beamforming algorithms.
+The receiver was studied in different environments: open field, low reflection, and urbanistic with tall buildings.
+It was shown that signal to noise ratio
+is improved up to $8\ \mathrm{dB}$ by applying beamforming. Also, it was revealed that
+by using MUSIC, it is possible to detect the angle of arrival of GNSS signals and also,
+it is possible to see reflected signals; when array processing was applied,
+deviation of receiver coordinates was improved.
+
+}
+
+\end{document}
