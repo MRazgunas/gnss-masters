@@ -7,30 +7,30 @@
 
 \iffalse
 Bepiločių orlaiviai, kaip pagrindinį navigacijos instrumentą naudoja GNSS sistemą. Esant
-geroms sąlygoms imtuvas veikia pakankamai patikimai, kad būtų užtrikrintas saugus bepiločio
-orlaivio veikimas. Tačiau didėjant bebiločių orlaivių taikymo sritims, vis dažniau jie yra
+geroms sąlygoms imtuvas veikia pakankamai patikimai, kad būtų užtikrintas saugus bepiločio
+orlaivio veikimas. Tačiau didėjant bepiločių orlaivių taikymo sritims, vis dažniau jie yra
 naudojami aplinkose su daugybe įvairių trikdžių.
-Vienas dažniausiais pasitaikančių trikdžių miesto teritojiose yra atspindžiai nuo pastatų.
-Dėl šių atspindžių prastėja GNSS signalo koreliacijos rezultatas, dėl ko gaunama pozicija su
+Vienas dažniausiais pasitaikančių trikdžių miesto teritorijose yra atspindžiai nuo pastatų.
+Dėl šių atspindžių prastėja GNSS signalo koreliacijos rezultatas, dėl to gaunama pozicija su
 mažesniu tikslumu.
 
 Pastaraisiais dešimtmečiais plačiai pradėti taikyti antenų masyvai,
-leidžia nuslopinti trigdžius priimama signalui, todėl šiame darbe buvo sukurtas
-GNSS imtuvas kuris pasinaudodamas spindulio formavimo metodais, slopina atspindžių
+leidžia nuslopinti trikdžius priimamam signalui, todėl šiame darbe buvo sukurtas
+GNSS imtuvas, kuris, pasinaudodamas spindulio formavimo metodais, slopina atspindžių
 trukdžius. Sukonstruotas imtuvas geba aptikti GNSS signalo sklidimo kryptis pasinaudodamas
 MUSIC algoritmu, bei suformavus spindulį priimti palydovų signalus be atspindžių.
 Imtuvo konstrukcijai buvo panaudoti HackRF imtuvai sinchronizuoti laike bei dažnyje.
 
 Šiame darbe buvo tiriamas sukonstruoto imtuvo laikinės ir dažninės sinchronizacijos, pademonstruota,
 kad HackRF imtuvai gali būti pritaikomi spindulio formavimui.
-Ištyrus sukurtą GNSS imtuvą, buvo pademnstuotas signalo ir atspindžių aptikimas skirtingose matavimų vietose:
+Ištyrus sukurtą GNSS imtuvą, buvo pademonstruotas signalo ir atspindžių aptikimas skirtingose matavimų vietose:
 vietovėje be atspindžių, vietovėje su nedideliais atspindžių šaltiniais, bei urbanistinėje miesto
-vietovėje. Taikant spindulio formavimą buvo pademonstuotas signalo triukšmo santyko padidėjimas iki
+vietovėje. Taikant spindulio formavimą buvo pademonstruotas signalo triukšmo santykio padidėjimas iki
 $8 \mathrm{dB}$, atspindžių slopinimas, bei imtuvo koordinatės pasiskirstymo sumažėjimas.
 \fi
 
 Unmanned Arial Vehicles (UAV) utilize GNSS receivers as the main navigation instrument, in
-ideal conditions receiver works sufficiently well to ensure safe operation of UAV.
+ideal conditions receiver works sufficiently well to ensure safe operation of a UAV.
 In recent years application fields of UAVs are expanding, and more often, they are used in environments
 with various interference to GNSS signals. One of the most common interference sources
 is a reflection from buildings in urbanized territories, which decreases performance often
@@ -45,8 +45,8 @@ and applying beamforming techniques can improve navigation precision.
 The receiver is constructed with HackRF SDRs, synchronized in time and frequency.
 
 In this work constructed GNSS receiver was studied. It was shown that it is possible
-to synchronize HackRF SDRs, which allows applying MUSIC and beamforming algorithms.
-The receiver was studied in different environments: open field, low reflection, and urbanistic with tall buildings.
+to synchronize HackRF SDRs, which allows to apply MUSIC and beamforming algorithms.
+The receiver was studied in different environments: open field, low reflection and urbanistic environment with tall buildings.
 It was shown that signal to noise ratio
 is improved up to $8\ \mathrm{dB}$ by applying beamforming. Also, it was revealed that
 by using MUSIC, it is possible to detect the angle of arrival of GNSS signals and also,

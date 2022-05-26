@@ -92,7 +92,7 @@ kol stabilizuosis imtuvų temperatūra (apie 10 min).
     \begin{centering}
     \includegraphics[scale=0.55]{drawings/no_reflection}
     \par\end{centering}
-    \protect\caption{\label{fig:no_reflection}Nustatytos GPS palydovų signalų kryptys, naudojant MUSIC algoritmą.}
+    \protect\caption{\label{fig:no_reflection}Nustatytos GPS palydovų signalų kryptys atviroje vietovėje naudojant MUSIC algoritmą.}
 \end{figure}
 
 \ref{fig:no_reflection_snr}~pav. pavaizduotas signalo triukšmo santykis, kiekvieno palydovo,
@@ -106,15 +106,15 @@ signalo triukšmo santykis pagerėja nuo $2\ \mathrm{dB}$. iki $8\ \mathrm{dB}$ 
 su signalo triukšmo santykiu be spindulio formavimo.
 Kadangi naudojamos 4 antenos, tai numatomas signalo pagerėjimas yra $6\ \mathrm{dB}$,
 kas ir yra stebima signalo triukšmo santykio matavimuose. Taip pat PRN10 ir PRN27 atveju,
-nenaudojant spindulio formavimo palydovo signalas buvo per silpnas, kad būtų
-įmanoma vykdyti jo sekimą, todėl naudojant spindulio formavimą buvo aptikta
+nenaudojant spindulio formavimo palydovo signalas buvo per silpnas, norint
+vykdyti jo sekimą, todėl naudojant spindulio formavimą buvo aptikta
 daugiau palydovų, kas leidžia tiksliau nustatyti imtuvo poziciją.
 
 \begin{figure}[ht]
     \begin{centering}
     \includegraphics[scale=0.6]{drawings/no_refelection_snr}
     \par\end{centering}
-    \protect\caption{\label{fig:no_reflection_snr}Nustatytas signalo triukšmo santykis nenaudojant ir naudojant spindulio formavimą.}
+    \protect\caption{\label{fig:no_reflection_snr}Nustatytas signalo triukšmo santykis nenaudojant ir naudojant spindulio formavimą atviroje vietovėje.}
 \end{figure}
 
 Atlikus spindulio formavimą, suskaičiuotos koordinatės pavaizduotos \ref{fig:no_reflection_map}~pav.
@@ -127,7 +127,7 @@ nėra stebimi, tai šiam matavimui atspindžiai nesudarė papildomo trukdžio ko
     \begin{centering}
     \hspace*{-3cm}\includegraphics[scale=0.45]{drawings/no_reflection_map}
     \par\end{centering}
-    \protect\caption{\label{fig:no_reflection_map}Imtuvo pozicijos koordinatės su spindulio formavimu ir be spindulio formavimo. Palydovinės nuotraukos \cite{google_maps}.}
+    \protect\caption{\label{fig:no_reflection_map}Imtuvo koordinatės su spindulio formavimu ir be spindulio formavimo atviroje vietovėje. Palydovinės nuotraukos \cite{google_maps}.}
 \end{figure}
 
 
@@ -164,7 +164,7 @@ Kitų palydovų signalai beveik sutampa su tikrosiomis palydovų padėtimis, ta�
     \begin{centering}
     \includegraphics[scale=0.45]{drawings/one_reflection_2}
     \par\end{centering}
-    \protect\caption{\label{fig:single_reflection}Nustatytos GPS palydovų signalų kryptys, naudojant MUSIC algoritmą.}
+    \protect\caption{\label{fig:single_reflection}Nustatytos GPS palydovų signalų kryptys naudojant MUSIC algoritmą, kai atspindžiai vyksta nuo vieno pastato.}
 \end{figure}
 
 \ref{fig:single_reflection_snr}~pav. pavaizduotas signalo triukšmo santykis atliekant spindulio formavimą,
@@ -177,7 +177,7 @@ imtuvas priima signalą iš vieno papildomo palydovo, kai vykdomas spindulio for
     \begin{centering}
     \includegraphics[scale=0.6]{drawings/one_reflection_snr}
     \par\end{centering}
-    \protect\caption{\label{fig:single_reflection_snr}Nustatytas signalo triukšmo santykis nenaudojant ir naudojant spindulio formavimą.}
+    \protect\caption{\label{fig:single_reflection_snr}Nustatytas signalo triukšmo santykis nenaudojant ir naudojant spindulio formavimą, kai atspindžiai vyksta nuo vieno pastato.}
 \end{figure}
 
 Iš \ref{fig:single_reflection_map}~pav. galime nustatyti, kad koordinačių nuokrypis sumažėjo taikant spindulio
@@ -192,7 +192,7 @@ Koordinačių nuokrypis sumažėja ir dėl vieno papildomo palydovo.
     \begin{centering}
     \hspace*{-4cm}\includegraphics[scale=0.5]{drawings/one_reflection_map}
     \par\end{centering}
-    \protect\caption{\label{fig:single_reflection_map}Imtuvo pozicijos koordinatės su spindulio formavimu ir be spindulio formavimo. Palydovinės nuotraukos \cite{google_maps}.}
+    \protect\caption{\label{fig:single_reflection_map}Imtuvo koordinatės su spindulio formavimu ir be spindulio formavimo, kai atspindžiai vyksta nuo vieno pastato. Palydovinės nuotraukos \cite{google_maps}.}
 \end{figure}
 
 \subsubsection{GNSS signalų priėmimas urbanistinėje aplinkoje}\label{sec:gnss_meas_two_reflection}
@@ -223,7 +223,7 @@ atspindį nuo pastato rytuose.
     \begin{centering}
     \includegraphics[scale=0.50]{drawings/two_reflections}
     \par\end{centering}
-    \protect\caption{\label{fig:two_reflection}Nustatytos GPS palydovų signalų kryptys, naudojant MUSIC algoritmą.}
+    \protect\caption{\label{fig:two_reflection}Nustatytos GPS palydovų signalų kryptys urbanistinėje aplinkoje naudojant MUSIC algoritmą.}
 \end{figure}
 
 \ref{fig:two_reflection_snr}~pav. pavaizduotas signalo triukšmo santykis su spindulio
@@ -240,7 +240,7 @@ leidžiantis, signalas pradingsta, pasislepia už pastato esančio vakaruose.
     \begin{centering}
     \includegraphics[scale=0.6]{drawings/two_reflections_snr}
     \par\end{centering}
-    \protect\caption{\label{fig:two_reflection_snr}Nustatytas signalo triukšmo santykis nenaudojant ir naudojant spindulio formavimą.}
+    \protect\caption{\label{fig:two_reflection_snr}Nustatytas signalo triukšmo santykis nenaudojant ir naudojant spindulio formavimą urbanistinėje aplinkoje.}
 \end{figure}
 
 \ref{fig:two_reflection_map}~pav. galime matyti, kad be spindulio formavimo koordinačių
@@ -254,7 +254,7 @@ skaičiavimui, bei sumažėjęs atspindžių trikdis.
     \begin{centering}
     \includegraphics[scale=0.5]{drawings/two_reflections_map}
     \par\end{centering}
-    \protect\caption{\label{fig:two_reflection_map}Imtuvo pozicijos koordinatės su spindulio formavimu ir be spindulio formavimo. Palydovinės nuotraukos \cite{google_maps}.}
+    \protect\caption{\label{fig:two_reflection_map}Imtuvo koordinatės su spindulio formavimu ir be spindulio formavimo urbanistinėje aplinkoje. Palydovinės nuotraukos \cite{google_maps}.}
 \end{figure}
 
 \subsubsection{GNSS imtuvo matavimų apibendrinimas}
